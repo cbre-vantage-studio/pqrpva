@@ -407,7 +407,991 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 </div></div>
 
 <div id="tab-escalation" class="tab-panel" style="padding:0;overflow:hidden;">
-  <iframe src="escalation-framework.html" style="width:100%;height:calc(100vh - 106px);border:none;display:block;" title="Escalation Framework"></iframe>
+<div id="esc-embed" style="height:calc(100vh - 106px);overflow-y:auto;">
+<style>
+
+  #esc-embed, #esc-embed *::before, #esc-embed *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  #esc-embed {
+    /* ── CBRE Brand Colors (Visual Guidelines 2026) ── */
+    --cbre-green:      #003F2D;
+    --cbre-accent:     #17E88F;
+    --cbre-dark-green: #012A2D;
+    --cbre-light-grey: #CAD1D3;
+    --cbre-midnight:   #032842;
+    --cbre-sage:       #538184;
+    --cbre-celadon:    #80BBAD;
+    --cbre-wheat:      #DBD99A;
+    --cbre-cement:     #7F8480;
+    --cbre-midnight-t: #778F9C;
+    --cbre-sage-t:     #96B3B6;
+
+    /* ── Trigger badge colors (A/B/C) ── */
+    --trig-a: #17E88F;
+    --trig-b: #DBD99A;
+    --trig-c: #80BBAD;
+
+    /* ── Semantic tokens ── */
+    --bg:         var(--cbre-dark-green);
+    --surface:    color-mix(in srgb, var(--cbre-green) 70%, var(--cbre-dark-green));
+    --surface-hi: var(--cbre-green);
+    --border:     color-mix(in srgb, var(--cbre-sage) 22%, var(--cbre-dark-green));
+    --border-hi:  color-mix(in srgb, var(--cbre-sage) 44%, var(--cbre-dark-green));
+
+    --text-1: var(--cbre-light-grey);
+    --text-2: var(--cbre-sage-t);
+    --text-3: var(--cbre-sage);
+
+    /* Primary accent — Accent Green */
+    --amber:      var(--cbre-accent);
+    --amber-soft: color-mix(in srgb, var(--cbre-accent) 65%, var(--cbre-sage-t));
+    --amber-bg:   color-mix(in srgb, var(--cbre-accent) 13%, var(--cbre-dark-green));
+    --amber-bdr:  color-mix(in srgb, var(--cbre-accent) 30%, var(--cbre-dark-green));
+
+    /* Celadon — resolved */
+    --green:     var(--cbre-celadon);
+    --green-bg:  color-mix(in srgb, var(--cbre-celadon) 15%, var(--cbre-dark-green));
+    --green-bdr: color-mix(in srgb, var(--cbre-celadon) 30%, var(--cbre-dark-green));
+
+    /* Wheat — escalation / warning */
+    --red:       var(--cbre-wheat);
+    --red-bg:    color-mix(in srgb, var(--cbre-wheat) 15%, var(--cbre-dark-green));
+    --red-bdr:   color-mix(in srgb, var(--cbre-wheat) 28%, var(--cbre-dark-green));
+
+    /* Sage — data integrity accent */
+    --teal:      var(--cbre-sage);
+    --teal-bg:   color-mix(in srgb, var(--cbre-sage) 20%, var(--cbre-dark-green));
+    --teal-bdr:  color-mix(in srgb, var(--cbre-sage) 38%, var(--cbre-dark-green));
+
+    /* Team */
+    --cs:      var(--cbre-celadon);
+    --cs-bg:   color-mix(in srgb, var(--cbre-celadon) 13%, var(--cbre-dark-green));
+    --l1:      var(--cbre-midnight-t);
+    --l1-bg:   color-mix(in srgb, var(--cbre-midnight-t) 15%, var(--cbre-dark-green));
+    --l2:      var(--cbre-wheat);
+    --l2-bg:   color-mix(in srgb, var(--cbre-wheat) 13%, var(--cbre-dark-green));
+    --prod:    var(--cbre-accent);
+    --prod-bg: color-mix(in srgb, var(--cbre-accent) 11%, var(--cbre-dark-green));
+
+    /* ── Spacing ── */
+    --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+    --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+
+    /* ── Typography ── */
+    --fd: 'Barlow Condensed', sans-serif;
+    --fb: 'Figtree', sans-serif;
+  }
+
+  #esc-embed { scroll-behavior: smooth; }
+
+  #esc-embed {
+    background: var(--bg);
+    color: var(--text-1);
+    font-family: var(--fb);
+    font-size: 14px;
+    line-height: 1.6;
+    padding: var(--s7) var(--s5) var(--s9);
+    font-kerning: normal;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #esc-embed .page {
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  /* ────────────────────────────────────────
+     HEADER
+  ──────────────────────────────────────── */
+  #esc-embed .hdr {
+    margin-bottom: var(--s7);
+    padding-bottom: var(--s5);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--s5);
+  }
+
+  #esc-embed .hdr-left { flex: 1; min-width: 280px; }
+
+  #esc-embed .eyebrow {
+    font-family: var(--fd);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: var(--s2);
+  }
+
+  #esc-embed .hdr-title {
+    font-family: var(--fd);
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.05;
+    color: var(--text-1);
+    margin-bottom: var(--s3);
+  }
+
+  #esc-embed .hdr-title em { font-style: normal; color: var(--amber); }
+
+  #esc-embed .hdr-desc {
+    font-size: 0.8125rem;
+    color: var(--text-2);
+    max-width: 52ch;
+    line-height: 1.7;
+  }
+
+  #esc-embed .legend {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s2);
+    align-items: flex-end;
+  }
+
+  #esc-embed .legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--s2);
+    font-size: 11px;
+    color: var(--text-3);
+  }
+
+  #esc-embed .legend-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ────────────────────────────────────────
+     FLOW LABEL (above each workflow)
+  ──────────────────────────────────────── */
+  #esc-embed .flow-label {
+    margin-bottom: var(--s4);
+  }
+
+  #esc-embed .flow-label .fl-eyebrow {
+    font-family: var(--fd);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 4px;
+  }
+
+  #esc-embed .flow-label h2 {
+    font-family: var(--fd);
+    font-size: 1.375rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text-1);
+  }
+
+  #esc-embed .flow-label h2 em { font-style: normal; color: var(--amber); }
+  #esc-embed .flow-label h2 em.teal { color: var(--teal); }
+
+  #esc-embed .flow-label .fl-desc {
+    margin-top: var(--s2);
+    font-size: 0.8125rem;
+    color: var(--text-2);
+    max-width: 68ch;
+    line-height: 1.65;
+  }
+
+  /* ────────────────────────────────────────
+     WORKFLOW GRID — 3 phase columns
+  ──────────────────────────────────────── */
+  #esc-embed .workflow {
+    display: grid;
+    grid-template-columns: 1fr 44px 1.3fr 44px 1.5fr;
+    align-items: start;
+    margin-bottom: var(--s7);
+  }
+
+  /* ────────────────────────────────────────
+     PHASE COLUMN
+  ──────────────────────────────────────── */
+  #esc-embed .pcol {
+    background: var(--surface);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #esc-embed .pcol-hdr {
+    padding: var(--s4) var(--s4) var(--s3);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: baseline;
+    gap: var(--s3);
+    background: var(--surface-hi);
+  }
+
+  #esc-embed .pcol-n {
+    font-family: var(--fd);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--border-hi);
+    font-variant-numeric: tabular-nums;
+    min-width: 2rem;
+    flex-shrink: 0;
+  }
+
+  #esc-embed .pcol-n.teal {
+    color: color-mix(in srgb, var(--cbre-sage) 55%, var(--cbre-dark-green));
+  }
+
+  #esc-embed .pcol-name {
+    font-family: var(--fd);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+
+  #esc-embed .pcol-body {
+    padding: var(--s4);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+  }
+
+  /* ────────────────────────────────────────
+     PHASE CONNECTOR ARROW
+  ──────────────────────────────────────── */
+  #esc-embed .pconn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 52px; /* aligns roughly with first step */
+    gap: var(--s1);
+  }
+
+  #esc-embed .pconn-line {
+    width: 1px;
+    flex: 1;
+    max-height: 24px;
+    background: var(--border-hi);
+  }
+
+  #esc-embed .pconn-arrow {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid var(--border-hi);
+  }
+
+  /* Full horizontal connector line */
+  #esc-embed .pconn::before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: var(--border-hi);
+    margin-top: -1px;
+  }
+
+  /* Simpler approach — just use the element itself */
+  #esc-embed .pconn {
+    position: relative;
+    padding-top: 50px;
+  }
+
+  #esc-embed .pconn-inner {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+  }
+
+  #esc-embed .pconn-inner::before {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-hi);
+  }
+
+  #esc-embed .pconn-inner::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 6px solid var(--border-hi);
+  }
+
+  /* ────────────────────────────────────────
+     STEP (within a phase column)
+  ──────────────────────────────────────── */
+  #esc-embed .step {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: var(--s2) var(--s3);
+    padding: var(--s3) 0;
+    align-items: start;
+  }
+
+  #esc-embed .step + .step {
+    border-top: 1px solid var(--border);
+  }
+
+  #esc-embed .sn {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--fd);
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  #esc-embed .sn.cs { background: var(--cs-bg);   color: var(--cs); }
+  #esc-embed .sn.l1 { background: var(--l1-bg);   color: var(--l1); }
+  #esc-embed .sn.l2 { background: var(--l2-bg);   color: var(--l2); }
+  #esc-embed .sn.prod { background: var(--prod-bg); color: var(--prod); }
+  #esc-embed .sn.di { background: var(--teal-bg); color: var(--teal); }
+
+  #esc-embed .sb { min-width: 0; }
+
+  #esc-embed .st-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--s2);
+    margin-bottom: 3px;
+  }
+
+  #esc-embed .st {
+    font-family: var(--fd);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--text-1);
+    line-height: 1.2;
+    flex: 1;
+  }
+
+  #esc-embed .sd {
+    font-size: 0.75rem;
+    color: var(--text-2);
+    line-height: 1.6;
+  }
+
+  #esc-embed .ot {
+    font-family: var(--fd);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  #esc-embed .ot.cs { background: var(--cs-bg);   color: var(--cs); }
+  #esc-embed .ot.l1 { background: var(--l1-bg);   color: var(--l1); }
+  #esc-embed .ot.l2 { background: var(--l2-bg);   color: var(--l2); }
+  #esc-embed .ot.prod { background: var(--prod-bg); color: var(--prod); }
+  #esc-embed .ot.di { background: var(--teal-bg); color: var(--teal); }
+
+  /* ────────────────────────────────────────
+     DECISION GATE (compact, within column)
+  ──────────────────────────────────────── */
+  #esc-embed .gate {
+    margin: var(--s2) 0;
+    background: var(--amber-bg);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  #esc-embed .gate.teal-gate { background: var(--teal-bg); }
+
+  #esc-embed .gate-q {
+    padding: var(--s2) var(--s3);
+    font-family: var(--fd);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    gap: var(--s2);
+  }
+
+  #esc-embed .gate-q.teal-q { color: var(--teal); }
+
+  #esc-embed .gate-icon {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--amber);
+    color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  #esc-embed .gate-icon.teal-icon { background: var(--teal); }
+
+  #esc-embed .gate-outcomes {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #esc-embed .gate-out {
+    padding: var(--s2) var(--s3);
+    display: flex;
+    align-items: baseline;
+    gap: var(--s2);
+    font-size: 0.75rem;
+    color: var(--text-2);
+    line-height: 1.45;
+  }
+
+  #esc-embed .gate-out + .gate-out {
+    border-top: 1px solid var(--border);
+  }
+
+  #esc-embed .gate-lbl {
+    font-family: var(--fd);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  #esc-embed .gate-lbl.yes { color: var(--green); }
+  #esc-embed .gate-lbl.no { color: var(--red); }
+  #esc-embed .gate-lbl.alt { color: var(--teal); }
+
+  /* Step connector within column */
+  #esc-embed .step-conn {
+    height: var(--s3);
+    padding-left: 13px;
+  }
+
+  #esc-embed .step-conn::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: var(--border);
+  }
+
+  #esc-embed .step-conn.warn::before { background: var(--red); }
+
+  /* ────────────────────────────────────────
+     CRITERIA PANEL (compact for column)
+  ──────────────────────────────────────── */
+  #esc-embed .criteria {
+    background: var(--amber-bg);
+    border-radius: 5px;
+    padding: var(--s3) var(--s4);
+    margin-bottom: var(--s3);
+  }
+
+  #esc-embed .criteria.teal { background: var(--teal-bg); }
+
+  #esc-embed .criteria-lbl {
+    font-family: var(--fd);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber-soft);
+    margin-bottom: var(--s3);
+  }
+
+  #esc-embed .criteria-lbl.teal { color: var(--teal); }
+
+  #esc-embed .crit-list { display: flex; flex-direction: column; gap: var(--s2); }
+
+  #esc-embed .crit {
+    border-radius: 7px;
+    padding: var(--s3) var(--s4);
+    position: relative;
+    transition: filter 0.15s ease;
+    /* color set per variant below */
+  }
+  #esc-embed .crit:hover { filter: brightness(1.07); }
+
+  /* A — Accent Green */
+  #esc-embed .crit-a {
+    background: color-mix(in srgb, var(--trig-a) 8%, var(--bg));
+    border: 1px solid color-mix(in srgb, var(--trig-a) 30%, var(--bg));
+  }
+  /* B — Wheat */
+  #esc-embed .crit-b {
+    background: color-mix(in srgb, var(--trig-b) 8%, var(--bg));
+    border: 1px solid color-mix(in srgb, var(--trig-b) 30%, var(--bg));
+  }
+  /* C — Celadon */
+  #esc-embed .crit-c {
+    background: color-mix(in srgb, var(--trig-c) 8%, var(--bg));
+    border: 1px solid color-mix(in srgb, var(--trig-c) 30%, var(--bg));
+  }
+
+  #esc-embed .crit-hd {
+    display: flex;
+    align-items: center;
+    gap: var(--s2);
+    margin-bottom: 5px;
+  }
+
+  #esc-embed .cn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    font-family: var(--fd);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+  #esc-embed .cn-a {
+    background: color-mix(in srgb, var(--trig-a) 18%, var(--bg));
+    border: 1px solid color-mix(in srgb, var(--trig-a) 45%, var(--bg));
+    color: var(--trig-a);
+  }
+  #esc-embed .cn-b {
+    background: color-mix(in srgb, var(--trig-b) 18%, var(--bg));
+    border: 1px solid color-mix(in srgb, var(--trig-b) 45%, var(--bg));
+    color: var(--trig-b);
+  }
+  #esc-embed .cn-c {
+    background: color-mix(in srgb, var(--trig-c) 18%, var(--bg));
+    border: 1px solid color-mix(in srgb, var(--trig-c) 45%, var(--bg));
+    color: var(--trig-c);
+  }
+
+  #esc-embed .ct {
+    font-family: var(--fd);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-1);
+    line-height: 1.2;
+  }
+
+  #esc-embed .cd { font-size: 0.74rem; color: var(--text-2); line-height: 1.55; padding-left: 30px; }
+
+  /* ────────────────────────────────────────
+     ESCALATION PROTOCOL (compact)
+  ──────────────────────────────────────── */
+  #esc-embed .esc-panel {
+    background: var(--red-bg);
+    border-radius: 5px;
+    padding: var(--s3) var(--s4);
+    margin-bottom: var(--s3);
+  }
+
+  #esc-embed .esc-lbl {
+    font-family: var(--fd);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: var(--s3);
+  }
+
+  #esc-embed .esc-list { display: flex; flex-direction: column; gap: var(--s3); }
+
+  #esc-embed .esc-step {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: var(--s2);
+    align-items: start;
+  }
+
+  #esc-embed .esn {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--red);
+    color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--fd);
+    font-size: 9px;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  #esc-embed .est {
+    font-family: var(--fd);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-1);
+    margin-bottom: 2px;
+  }
+
+  #esc-embed .esd { font-size: 0.75rem; color: var(--text-2); line-height: 1.55; }
+
+  #esc-embed .esc-owners {
+    display: flex;
+    gap: var(--s1);
+    flex-wrap: wrap;
+    margin-top: var(--s1);
+  }
+
+  /* ────────────────────────────────────────
+     RESOLUTION BLOCK
+  ──────────────────────────────────────── */
+  #esc-embed .resolve {
+    background: var(--green-bg);
+    border-radius: 5px;
+    padding: var(--s3) var(--s4);
+    text-align: center;
+    margin-top: auto; /* push to bottom if column is flex */
+  }
+
+  #esc-embed .resolve.teal { background: var(--teal-bg); }
+
+  #esc-embed .resolve-t {
+    font-family: var(--fd);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 3px;
+  }
+
+  #esc-embed .resolve-t.teal { color: var(--teal); }
+
+  #esc-embed .resolve-d { font-size: 0.75rem; color: var(--text-2); line-height: 1.55; }
+
+  /* ────────────────────────────────────────
+     FLOW SEPARATOR
+  ──────────────────────────────────────── */
+  #esc-embed .flow-sep {
+    display: flex;
+    align-items: center;
+    gap: var(--s4);
+    margin: var(--s7) 0 var(--s5);
+  }
+
+  #esc-embed .flow-sep::before, #esc-embed .flow-sep::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  #esc-embed .flow-sep-label {
+    font-family: var(--fd);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    white-space: nowrap;
+    padding: 4px 14px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+  }
+
+  /* ────────────────────────────────────────
+     FOOTER
+  ──────────────────────────────────────── */
+  #esc-embed .site-footer {
+    margin-top: var(--s8);
+    padding-top: var(--s5);
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--s6);
+  }
+
+  #esc-embed .fb-title {
+    font-family: var(--fd);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: var(--s3);
+  }
+
+  #esc-embed .fb-item { font-size: 12px; color: var(--text-2); line-height: 1.9; }
+  #esc-embed .fb-item .role { color: var(--text-3); margin-left: 4px; }
+
+  /* ────────────────────────────────────────
+     RESPONSIVE — stack columns on narrow screens
+  ──────────────────────────────────────── */
+  @media (max-width: 860px) {
+    #esc-embed { padding: var(--s5) var(--s4) var(--s8); font-size: 13px; }
+
+    #esc-embed .hdr { flex-direction: column; align-items: flex-start; }
+    #esc-embed .legend { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+
+    #esc-embed .workflow {
+      grid-template-columns: 1fr;
+    }
+
+    #esc-embed .pconn { display: none; }
+
+    #esc-embed .pcol + .pcol {
+      margin-top: var(--s3);
+    }
+
+    #esc-embed .pcol-hdr .pcol-n { font-size: 1.5rem; }
+  }
+
+</style>
+<div class="page">
+
+<!-- ══════════════════════════════
+     HEADER
+══════════════════════════════ -->
+<header class="hdr">
+  <div class="hdr-left">
+    <div class="eyebrow">Analytics Platform · Internal Operations</div>
+    <h1 class="hdr-title">Data Issue <em>Escalation</em> Framework</h1>
+    <p class="hdr-desc">Standard operating procedure for triaging pipeline failures and data integrity issues, with defined escalation triggers and a leadership protocol when normal resolution breaks down.</p>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--cs)"></div>Client Success</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--l1)"></div>Olympic · L1</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--l2)"></div>Core / Redwood · L2</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--prod)"></div>Product</div>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════
+     FLOW 1 — PIPELINE ISSUES
+══════════════════════════════ -->
+<div class="flow-label">
+  <div class="fl-eyebrow">Pipeline Issues — Stale data, incomplete loads, ingestion failures</div>
+  <h2><em>Pipeline</em> Escalation Path</h2>
+</div>
+
+<div class="workflow">
+
+  <!-- Phase 1 -->
+  <div class="pcol">
+    <div class="pcol-hdr">
+      <span class="pcol-n">01</span>
+      <span class="pcol-name">Detection &amp; Intake</span>
+    </div>
+    <div class="pcol-body">
+
+      <div class="step">
+        <div class="sn cs">01</div>
+        <div class="sb">
+          <div class="st-row">
+            <div class="st">Issue Detected</div>
+            <span class="ot cs">CS</span>
+          </div>
+          <div class="sd">Client reports anomaly, or monitoring flags stale or incomplete data. CS confirms and documents impact scope.</div>
+        </div>
+      </div>
+
+      <div class="step-conn"></div>
+
+      <div class="step">
+        <div class="sn cs">02</div>
+        <div class="sb">
+          <div class="st-row">
+            <div class="st">Jira Ticket Created</div>
+            <span class="ot cs">CS</span>
+          </div>
+          <div class="sd">CS opens ticket with: issue type, affected client(s), data range, detection timestamp, and initial severity.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Arrow 1→2 -->
+  <div class="pconn"><div class="pconn-inner"></div></div>
+
+  <!-- Phase 2 -->
+  <div class="pcol">
+    <div class="pcol-hdr">
+      <span class="pcol-n">02</span>
+      <span class="pcol-name">Tiered Resolution</span>
+    </div>
+    <div class="pcol-body">
+
+      <div class="step">
+        <div class="sn l1">03</div>
+        <div class="sb">
+          <div class="st-row">
+            <div class="st">Olympic Group — First Response</div>
+            <span class="ot l1">Olympic · L1</span>
+          </div>
+          <div class="sd">Triages ticket. Handles known, repeatable pipeline issues within defined SLA window.</div>
+        </div>
+      </div>
+
+      <div class="gate">
+        <div class="gate-q"><div class="gate-icon">?</div>Resolved by Olympic (L1)?</div>
+        <div class="gate-outcomes">
+          <div class="gate-out"><span class="gate-lbl yes">YES</span> Ticket closed. Document fix. Notify CS to confirm with client.</div>
+          <div class="gate-out"><span class="gate-lbl no">NO</span> Escalate to Core / Redwood for deeper investigation → Step 04</div>
+        </div>
+      </div>
+
+      <div class="step-conn"></div>
+
+      <div class="step">
+        <div class="sn l2">04</div>
+        <div class="sb">
+          <div class="st-row">
+            <div class="st">Core / Redwood — Deep Investigation</div>
+            <span class="ot l2">Core / Redwood · L2</span>
+          </div>
+          <div class="sd">Examines pipeline logic, ingestion errors, and source-to-destination discrepancies at infrastructure level.</div>
+        </div>
+      </div>
+
+      <div class="gate">
+        <div class="gate-q"><div class="gate-icon">?</div>Resolved by Core / Redwood (L2)?</div>
+        <div class="gate-outcomes">
+          <div class="gate-out"><span class="gate-lbl yes">YES</span> Ticket closed. Document root cause. Notify CS to confirm with client.</div>
+          <div class="gate-out"><span class="gate-lbl no">NO</span> Issue exits normal flow → leadership escalation triggered in Phase 03</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Arrow 2→3 -->
+  <div class="pconn"><div class="pconn-inner"></div></div>
+
+  <!-- Phase 3 -->
+  <div class="pcol">
+    <div class="pcol-hdr">
+      <span class="pcol-n">03</span>
+      <span class="pcol-name">Leadership Escalation</span>
+    </div>
+    <div class="pcol-body">
+
+      <div class="criteria">
+        <div class="criteria-lbl">Triggers — any one activates this phase</div>
+        <div class="crit-list">
+          <div class="crit crit-a">
+            <div class="crit-hd"><div class="cn cn-a">A</div><div class="ct">Client Severity Level</div></div>
+            <div class="cd">Issue affects a Tier 1 or enterprise client. Escalate immediately, do not wait for the L2 window to expire.</div>
+          </div>
+          <div class="crit crit-b">
+            <div class="crit-hd"><div class="cn cn-b">B</div><div class="ct">Scope of Impact</div></div>
+            <div class="cd">Three or more clients affected, or two or more data sources compromised in the same incident.</div>
+          </div>
+          <div class="crit crit-c">
+            <div class="crit-hd"><div class="cn cn-c">C</div><div class="ct">Recurring Issue Pattern</div></div>
+            <div class="cd">Same issue type at L1 or L2 more than once in a 30-day window — signals a systemic problem.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="esc-panel">
+        <div class="esc-lbl">Leadership Protocol — 2-Week Resolution Cadence</div>
+        <div class="esc-list">
+          <div class="esc-step">
+            <div class="esn">1</div>
+            <div>
+              <div class="est">Alert Leadership <span style="font-weight:400;font-size:0.7rem;opacity:0.7;">— Immediate</span></div>
+              <div class="esd">CS Lead and Eng Lead notified simultaneously: ticket ID, issue type, time open, last action, and client impact summary. Slack + email required.</div>
+              <div class="esc-owners"><span class="ot cs">CS Lead</span><span class="ot l2">Eng Lead</span></div>
+            </div>
+          </div>
+          <div class="esc-step">
+            <div class="esn">2</div>
+            <div>
+              <div class="est">Kickoff Session <span style="font-weight:400;font-size:0.7rem;opacity:0.7;">— Within 24 hrs</span></div>
+              <div class="esd">30-min standing call: align on root cause, assign one accountable owner per side, confirm client comms approach. Set twice-weekly check-in schedule (Mon &amp; Thu).</div>
+              <div class="esc-owners"><span class="ot cs">CS Lead</span><span class="ot l2">Eng Lead</span></div>
+            </div>
+          </div>
+          <div class="esc-step">
+            <div class="esn">3</div>
+            <div>
+              <div class="est">Week 1 Check-ins <span style="font-weight:400;font-size:0.7rem;opacity:0.7;">— Mon &amp; Thu</span></div>
+              <div class="esd">Structured 20-min syncs: (1) resolution progress since last call, (2) active blockers and owners, (3) client-facing status update needed? Product Lead joins if a product rule change is in scope.</div>
+              <div class="esc-owners"><span class="ot cs">CS Lead</span><span class="ot l2">Eng Lead</span></div>
+            </div>
+          </div>
+          <div class="esc-step">
+            <div class="esn">4</div>
+            <div>
+              <div class="est">Week 2 Check-ins <span style="font-weight:400;font-size:0.7rem;opacity:0.7;">— Mon &amp; Thu · Day 14 Gate</span></div>
+              <div class="esd">Same agenda as Week 1. If issue remains open at the Day 14 Monday call, leads must decide: extend escalation with a new owner, escalate further up the chain, or formally document a delayed-resolution plan with client notification.</div>
+              <div class="esc-owners"><span class="ot cs">CS Lead</span><span class="ot l2">Eng Lead</span></div>
+            </div>
+          </div>
+          <div class="esc-step">
+            <div class="esn">5</div>
+            <div>
+              <div class="est">Post-Resolution Retrospective <span style="font-weight:400;font-size:0.7rem;opacity:0.7;">— Once Closed</span></div>
+              <div class="esd">Lightweight retro within 5 business days of close: was this a process gap, tooling failure, or recurring pattern? Findings logged and shared with Product for backlog consideration.</div>
+              <div class="esc-owners"><span class="ot cs">CS Lead</span><span class="ot l2">Eng Lead</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="resolve">
+        <div class="resolve-t">✓ Issue Resolved &amp; Closed</div>
+        <div class="resolve-d">Ticket updated. CS confirms with client. Learnings logged.</div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /workflow -->
+
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer class="site-footer">
+  <div>
+    <div class="fb-title">Teams</div>
+    <div class="fb-item">Client Success <span class="role">intake + comms</span></div>
+    <div class="fb-item">Data Engineering <span class="role">pipeline ops</span></div>
+    <div class="fb-item">Product <span class="role">looped in as needed</span></div>
+  </div>
+  <div>
+    <div class="fb-title">Resolution Tiers</div>
+    <div class="fb-item">Olympic <span class="role">L1 · first response</span></div>
+    <div class="fb-item">Core / Redwood <span class="role">L2 · deep investigation</span></div>
+  </div>
+  <div>
+    <div class="fb-title">Escalation Owners</div>
+    <div class="fb-item">CS Lead <span class="role">client impact + comms</span></div>
+    <div class="fb-item">Eng Lead <span class="role">resolution ownership</span></div>
+  </div>
+  <div>
+    <div class="fb-title">Open Items</div>
+    <div class="fb-item">SLA thresholds per tier <span class="role">pending</span></div>
+    <div class="fb-item">Notification method <span class="role">pending</span></div>
+    <div class="fb-item">Tier 1 client list <span class="role">pending</span></div>
+  </div>
+</footer>
+
+</div><!-- /page -->
+</div>
 </div>
 
 <div id="tab-about" class="tab-panel"><div class="content">
