@@ -1461,7 +1461,7 @@ const tlMilestones=[
   ['Program',13,'Core sprint planning meeting held',true],
   ['Program',20,'Baseline metrics locked',true],
   ['Program',23,'Phase 1 exit / Phase 2 launch',true],
-  ['Program',42,'Phase 2 exec checkpoint readout',false],
+  ['Program',42,'Phase 2 exec checkpoint readout',true],
   ['Program',80,'Validate ≤50/month run rate',false],
   ['Program',85,'Phase 3 exec readout',false],
   ['Program',93,'Embed QA & alerting in onboarding',false],
@@ -1473,12 +1473,11 @@ const tlMilestones=[
   ['M&A',25,'Suppress non-actionable alerts',true],
   ['M&A',25,'Escalate JIRA BASS-16457 (schema mismatch)',true],
   ['M&A',25,'Escalate JIRA BASS-16564 (Tririga API)',true],
-  ['M&A',39,'Launch live burn-down dashboard',false],
+  ['M&A',39,'Launch live burn-down dashboard',true],
   ['M&A',74,'Refine alerting — 30-day false-pos review',false],
   ['Story/QA',9,'Define standard QA gates',true],
   ['Story/QA',12,'Implement new Story standards w/ Alan',true],
   ['Story/QA',24,'Lightweight QA artifacts complete (20 JIRA templates)',true],
-  ['Story/QA',32,'Enforce QA on all new Core stories',true],
   ['Story/QA',39,'Publish QA checklist + delivery template',true],
   ['Story/QA',70,'Add preventative QA checks',false],
   ['Story/QA',75,'Gagan report: 75% stories on track for QA compliance',false],
@@ -1488,7 +1487,7 @@ const tlMilestones=[
   ['OpModel',12,'Draft RACI v1',true],
   ['OpModel',32,'Escalation thresholds & routing active',false],
   ['OpModel',32,'Sprint capacity rule enforced (10–15%)',false],
-  ['OpModel',42,'Final RACI published',false],
+  ['OpModel',42,'Final RACI published',true],
   ['OpModel',42,'SLAs established (ack vs. resolution)',false],
   ['OpModel',62,"Little's Law throughput analysis done",false],
   ['OpModel',97,'Core–Reactive transition to steady-state',false],
@@ -1515,7 +1514,7 @@ const tlMonths=[
   {l:'Apr 13',p:0},{l:'May',p:10.65},{l:'Jun',p:28.99},
   {l:'Jul',p:46.75},{l:'Aug',p:65.09},{l:'Sep',p:83.43},{l:'Sep 30',p:100},
 ];
-const TODAY_PCT=(26/TL_TOTAL*100).toFixed(2);
+const TODAY_PCT=(()=>{const start=new Date('2026-04-13T00:00:00');const now=new Date();const day=Math.max(0,Math.min(TL_TOTAL,Math.floor((now-start)/(1000*60*60*24))));return(day/TL_TOTAL*100).toFixed(2);})();
 
 function buildTimeline(){
   const container=document.getElementById('milestone-timeline');
@@ -1588,7 +1587,7 @@ const windows=[
   {id:'w2',label:'Phase 2 Open — Enforce & Suppress',dates:'May 5 – May 18, 2026',phase:'Phase 2',phaseColor:'#7C3AED',phaseBg:'#EDE9FE',current:true,
    items:[{date:'May 6',ws:'Program',task:'Phase 1 exit review + Phase 2 enforcement confirmed',owner:'John Hernandez',output:'Phase 2 go-live',done:true},{date:'May 7',ws:'Story / QA',task:'Lightweight QA artifacts complete — 12 JIRA templates created',owner:'Megan Lane',output:'QA templates live',done:true},{date:'May 7',ws:'Story / QA',task:'Olympic team trained on QA sign-off expectations',owner:'Megan Lane',output:'Team trained; execution by May 15',done:true},{date:'May 8',ws:'Monitoring & Alerting',task:'Suppress non-actionable alerts: tesla-landing, SI7 checkpoints, envizi stage count',owner:'John Hernandez',output:'Alert volume reduced',done:true},{date:'May 8',ws:'Monitoring & Alerting',task:'Escalate JIRA BASS-16457 with SLA',owner:'John Hernandez',output:'JIRA SLA enforced',done:true},{date:'May 8',ws:'Monitoring & Alerting',task:'Escalate JIRA BASS-16564 with SLA',owner:'Dan Hernandez',output:'JIRA SLA enforced',done:true},{date:'May 15',ws:'Story / QA',task:'Enforce QA standards on all new Core stories',owner:'Megan Lane',output:'QA compliance live',done:true},{date:'May 13',ws:'Recurring Issues',task:'Call with Pratish & team — get ETA on IFM process communication changes + STTM (UI → DB → DM)',owner:'Dan Hernandez',output:'IFM ETA locked; STTM documented'},{date:'May 15',ws:'Operating Model',task:'Escalation thresholds & routing active (3+ failures)',owner:'Chris Jack',output:'Active escalation model'},{date:'May 15',ws:'Operating Model',task:'Reserve sprint capacity (10–15%) for Core consulting',owner:'Chris Jack',output:'Capacity rule enforced'}]},
   {id:'w3',label:'Phase 2 Close — First Fixes & Checkpoint',dates:'May 19 – May 31, 2026',phase:'Phase 2',phaseColor:'#7C3AED',phaseBg:'#EDE9FE',
-   items:[{date:'May 18',ws:'Recurring Issues',task:'Permanent fixes for top 3 repeat failure patterns',owner:'Dan Hernandez',output:'First drivers removed'},{date:'May 22',ws:'Monitoring & Alerting',task:'Launch live issue & alert burn-down dashboard',owner:'John Hernandez',output:'Burn-down tracker live'},{date:'May 22',ws:'Story / QA',task:'Publish QA checklist + updated delivery template',owner:'Megan Lane',output:'QA checklist published'},{date:'May 25',ws:'Program',task:'Phase 2 checkpoint — exec readout',owner:'John Hernandez',output:'Exec readout delivered'},{date:'May 25',ws:'Operating Model',task:'Final RACI published (MS / Core / Olympic)',owner:'Chris Jack',output:'Final RACI live'},{date:'May 25',ws:'Operating Model',task:'SLAs established for acknowledgment vs. resolution',owner:'Chris Jack',output:'SLAs active'}]},
+   items:[{date:'May 18',ws:'Recurring Issues',task:'Permanent fixes for top 3 repeat failure patterns',owner:'Dan Hernandez',output:'First drivers removed'},{date:'May 22',ws:'Monitoring & Alerting',task:'Launch live issue & alert burn-down dashboard',owner:'John Hernandez',output:'Burn-down tracker live',done:true},{date:'May 22',ws:'Story / QA',task:'Publish QA checklist + updated delivery template',owner:'Megan Lane',output:'QA checklist published',done:true},{date:'May 25',ws:'Program',task:'Phase 2 checkpoint — exec readout',owner:'John Hernandez',output:'Exec readout delivered',done:true},{date:'May 25',ws:'Operating Model',task:'Final RACI published (MS / Core / Olympic)',owner:'Chris Jack',output:'Final RACI live',done:true},{date:'May 25',ws:'Operating Model',task:'SLAs established for acknowledgment vs. resolution',owner:'Chris Jack',output:'SLAs active',done:true}]},
   {id:'w4',label:'Phase 3 Open — Systemic Fixes Begin',dates:'Jun 1 – Jun 22, 2026',phase:'Phase 3',phaseColor:'#D97706',phaseBg:'#FEF3C7',
    items:[{date:'Jun 2',ws:'Tableau Performance',task:'Tableau remediation kickoff — APAC mobilized',owner:'John Hernandez',output:'Execution live'},{date:'Jun 9',ws:'Recurring Issues',task:'Re-rank recurring backlog by volume & client impact',owner:'Dan Hernandez',output:'Prioritized fix roadmap'},{date:'Jun 12',ws:'Tableau Performance',task:'Phase 1 critical workbooks complete — revised 115 baseline scope',owner:'John Hernandez',output:'Critical tier done'},{date:'Jun 13',ws:'Tableau Performance',task:'Phase 2 Tableau remediation starts (Bad + Slow)',owner:'John Hernandez',output:'Phase 2 underway'},{date:'Jun 14',ws:'Operating Model',task:"Little's Law throughput analysis complete",owner:'Chris Jack',output:'Predictable delivery model'},{date:'Jun 18',ws:'Recurring Issues',task:'Fixes for top 5 additional failure patterns',owner:'Dan Hernandez',output:'Majority repeat drivers removed'},{date:'Jun 22',ws:'Story / QA',task:'Add preventative QA checks for resolved patterns',owner:'Megan Lane',output:'Fail-before-prod coverage'}]},
   {id:'w5',label:'Phase 3 Close — Validate & Align',dates:'Jun 23 – Jul 13, 2026',phase:'Phase 3',phaseColor:'#D97706',phaseBg:'#FEF3C7',
