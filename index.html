@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<!DOCTYPE html><script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Pqrp Executive Summary",
+  "schemaVersion": 1,
+  "description": "PQRP Executive Summary — live dashboard with Overview, Workstreams, Schedule (milestone burndown + timeline), Next Steps (checkable milestones synced to GitHub Gist), Risks (dynamic overdue/upcoming + 8-item risk register), and About tabs."
+}
+</script>
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>PQRP Executive Summary</title>
@@ -262,8 +268,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
       <div class="hstat"><div class="hstat-val">5</div><div class="hstat-lbl">Work-<br>streams</div></div>
       <div class="hstat-sep"></div>
       <div class="phase-pill">
-        <div class="pp-status"><span class="pp-dot"></span><span id="phase-pill-label">Phase 3 Active</span></div>
-        <div class="pp-dates" id="phase-pill-dates">May 26 – Jul 7, 2026</div>
+        <div class="pp-status"><span class="pp-dot"></span><span id="phase-pill-label">Phase 2 Active</span></div>
+        <div class="pp-dates" id="phase-pill-dates">May 5 – May 25, 2026</div>
       </div>
     </div>
   </div>
@@ -276,7 +282,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
     <button class="nav-btn" onclick="showTab('schedule',this)">Schedule</button>
     <button class="nav-btn" onclick="showTab('nextsteps',this)">Next Steps</button>
     <button class="nav-btn" onclick="showTab('risks',this)">Risks</button>
-    <button class="nav-btn" onclick="showTab('escalation',this)">Escalation</button>
     <button class="nav-btn" onclick="showTab('about',this)">About</button>
   </div>
   <button id="html-toggle-btn" onclick="toggleHtmlView()" style="padding:8px 14px;font-size:11px;font-weight:600;color:oklch(100% 0 0/40%);background:none;border:none;cursor:pointer;letter-spacing:.3px;border-left:1px solid oklch(100% 0 0/7%);transition:color .15s,background .15s;white-space:nowrap;font-family:monospace;" onmouseover="this.style.color='oklch(100% 0 0/80%)';this.style.background='oklch(100% 0 0/4%)'" onmouseout="this.style.color='oklch(100% 0 0/40%)';this.style.background='none'">&lt;/&gt;</button>
@@ -297,7 +302,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
   <div class="metric-band">
     <div class="metric"><div class="metric-label">Issues / Month</div><div class="metric-val">300</div><div class="metric-sub">Baseline — targeting ≤50</div><div class="metric-progress"><div class="metric-progress-fill" style="width:73%"></div></div></div>
     <div class="metric" style="--metric-accent:#2563EB"><div class="metric-label">Active Workstreams</div><div class="metric-val">5</div><div class="metric-sub">All in Phase 1</div></div>
-    <div class="metric" style="--metric-accent:#D97706"><div class="metric-label">Tableau Workbooks</div><div class="metric-val">55</div><div class="metric-sub">Remaining · 115 revised baseline · 60 done</div></div>
+    <div class="metric" style="--metric-accent:#D97706"><div class="metric-label">Tableau Workbooks</div><div class="metric-val">5</div><div class="metric-sub">Remaining of 99 (95% optimized)</div></div>
     <div class="metric" style="--metric-accent:#7C3AED"><div class="metric-label">Failure Reduction Goal</div><div class="metric-val">90%</div><div class="metric-sub">Recurring issue target</div></div>
   </div>
   <div class="section-title">Program Phases</div>
@@ -310,7 +315,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
   <div class="section-title">Why This Program Exists</div>
   <div class="why-grid">
     <div class="why-col why-problem"><div class="why-col-head">The Problem</div><ul><li>300 Managed Services issues/month tied to nightly analytics jobs</li><li>Alert fatigue &amp; unclear ownership — failures ignored until client impact</li><li>Reactive work consuming planned capacity and eroding delivery confidence</li><li>Tableau Server: 500+ slow-loading workbooks degrading user experience</li></ul></div>
-    <div class="why-col why-fix"><div class="why-col-head">What We're Fixing</div><ul><li><strong>Noise vs. Signal</strong> — Alerts only fire when human action is required</li><li><strong>Repeat Failures</strong> — Same root causes eliminated permanently</li><li><strong>QA Gaps</strong> — Standards enforced at story level</li><li><strong>Ownership Blur</strong> — Clear RACI: Managed Services / Core / Olympic</li><li><strong>Optimization</strong> — Tableau remediation phased across 337 remaining workbooks</li></ul></div>
+    <div class="why-col why-fix"><div class="why-col-head">What We're Fixing</div><ul><li><strong>Noise vs. Signal</strong> — Alerts only fire when human action is required</li><li><strong>Repeat Failures</strong> — Same root causes eliminated permanently</li><li><strong>QA Gaps</strong> — Standards enforced at story level</li><li><strong>Ownership Blur</strong> — Clear RACI: Managed Services / Core / Olympic</li><li><strong>Optimization</strong> — Tableau workbook optimization 95% complete (94/99); 5 remaining scheduled for July</li></ul></div>
   </div>
   <div class="section-title">Workstream Summary</div>
   <div class="ws-table-wrap"><table style="width:100%;border-collapse:collapse;"><thead><tr style="background:var(--navy);color:white;"><th style="padding:10px 14px;text-align:left;font-size:11px;font-weight:700;">Workstream</th><th style="padding:10px 14px;text-align:left;font-size:11px;font-weight:700;">Owner</th><th style="padding:10px 14px;text-align:left;font-size:11px;font-weight:700;">Target</th><th style="padding:10px 14px;text-align:center;font-size:11px;font-weight:700;">Status</th></tr></thead><tbody id="ws-table-body"></tbody></table></div>
@@ -393,7 +398,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 </div></div>
 
 <div id="tab-nextsteps" class="tab-panel"><div class="content">
-  <div class="current-window-badge"><div class="cw-dot"></div><div class="cw-text">You are here: Phase 3 Open — Systemic Fixes Begin (Jun 1 – Jun 22, 2026)</div></div>
+  <div class="current-window-badge"><div class="cw-dot"></div><div class="cw-text">You are here: Phase 2 Open — Enforce &amp; Suppress (May 5 – May 18, 2026)</div></div>
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
     <div class="section-title" style="margin-bottom:0;flex:1;">Weekly Milestones — All Phases</div>
     <button onclick="expandAll()" style="font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:white;cursor:pointer;color:var(--gray);margin-left:12px;">Expand All</button>
@@ -405,994 +410,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 <div id="tab-risks" class="tab-panel"><div class="content">
   <div id="risks-content"></div>
 </div></div>
-
-<div id="tab-escalation" class="tab-panel" style="padding:0;overflow:hidden;">
-<div id="esc-embed" style="height:calc(100vh - 106px);overflow-y:auto;">
-<style>
-
-  #esc-embed, #esc-embed *::before, #esc-embed *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  #esc-embed {
-    /* ── CBRE Brand Colors (Visual Guidelines 2026) ── */
-    --cbre-green:      #003F2D;
-    --cbre-accent:     #17E88F;
-    --cbre-dark-green: #012A2D;
-    --cbre-light-grey: #CAD1D3;
-    --cbre-midnight:   #032842;
-    --cbre-sage:       #538184;
-    --cbre-celadon:    #80BBAD;
-    --cbre-wheat:      #DBD99A;
-    --cbre-cement:     #7F8480;
-    --cbre-midnight-t: #778F9C;
-    --cbre-sage-t:     #96B3B6;
-
-    /* ── Trigger badge colors (A/B/C) ── */
-    --trig-a: #17E88F;
-    --trig-b: #DBD99A;
-    --trig-c: #80BBAD;
-
-    /* ── Semantic tokens ── */
-    --bg:         var(--cbre-dark-green);
-    --surface:    color-mix(in srgb, var(--cbre-green) 70%, var(--cbre-dark-green));
-    --surface-hi: var(--cbre-green);
-    --border:     color-mix(in srgb, var(--cbre-sage) 22%, var(--cbre-dark-green));
-    --border-hi:  color-mix(in srgb, var(--cbre-sage) 44%, var(--cbre-dark-green));
-
-    --text-1: var(--cbre-light-grey);
-    --text-2: var(--cbre-sage-t);
-    --text-3: var(--cbre-sage);
-
-    /* Primary accent — Accent Green */
-    --amber:      var(--cbre-accent);
-    --amber-soft: color-mix(in srgb, var(--cbre-accent) 65%, var(--cbre-sage-t));
-    --amber-bg:   color-mix(in srgb, var(--cbre-accent) 13%, var(--cbre-dark-green));
-    --amber-bdr:  color-mix(in srgb, var(--cbre-accent) 30%, var(--cbre-dark-green));
-
-    /* Celadon — resolved */
-    --green:     var(--cbre-celadon);
-    --green-bg:  color-mix(in srgb, var(--cbre-celadon) 15%, var(--cbre-dark-green));
-    --green-bdr: color-mix(in srgb, var(--cbre-celadon) 30%, var(--cbre-dark-green));
-
-    /* Wheat — escalation / warning */
-    --red:       var(--cbre-wheat);
-    --red-bg:    color-mix(in srgb, var(--cbre-wheat) 15%, var(--cbre-dark-green));
-    --red-bdr:   color-mix(in srgb, var(--cbre-wheat) 28%, var(--cbre-dark-green));
-
-    /* Sage — data integrity accent */
-    --teal:      var(--cbre-sage);
-    --teal-bg:   color-mix(in srgb, var(--cbre-sage) 20%, var(--cbre-dark-green));
-    --teal-bdr:  color-mix(in srgb, var(--cbre-sage) 38%, var(--cbre-dark-green));
-
-    /* Team */
-    --cs:      var(--cbre-celadon);
-    --cs-bg:   color-mix(in srgb, var(--cbre-celadon) 13%, var(--cbre-dark-green));
-    --l1:      var(--cbre-midnight-t);
-    --l1-bg:   color-mix(in srgb, var(--cbre-midnight-t) 15%, var(--cbre-dark-green));
-    --l2:      var(--cbre-wheat);
-    --l2-bg:   color-mix(in srgb, var(--cbre-wheat) 13%, var(--cbre-dark-green));
-    --prod:    var(--cbre-accent);
-    --prod-bg: color-mix(in srgb, var(--cbre-accent) 11%, var(--cbre-dark-green));
-
-    /* ── Spacing ── */
-    --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
-    --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
-
-    /* ── Typography ── */
-    --fd: 'Barlow Condensed', sans-serif;
-    --fb: 'Figtree', sans-serif;
-  }
-
-  #esc-embed { scroll-behavior: smooth; }
-
-  #esc-embed {
-    background: var(--bg);
-    color: var(--text-1);
-    font-family: var(--fb);
-    font-size: 14px;
-    line-height: 1.6;
-    padding: var(--s7) var(--s5) var(--s9);
-    font-kerning: normal;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  #esc-embed .page {
-    max-width: 1160px;
-    margin: 0 auto;
-  }
-
-  /* ────────────────────────────────────────
-     HEADER
-  ──────────────────────────────────────── */
-  #esc-embed .hdr {
-    margin-bottom: var(--s7);
-    padding-bottom: var(--s5);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: var(--s5);
-  }
-
-  #esc-embed .hdr-left { flex: 1; min-width: 280px; }
-
-  #esc-embed .eyebrow {
-    font-family: var(--fd);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-3);
-    margin-bottom: var(--s2);
-  }
-
-  #esc-embed .hdr-title {
-    font-family: var(--fd);
-    font-size: 2.25rem;
-    font-weight: 800;
-    line-height: 1.05;
-    color: var(--text-1);
-    margin-bottom: var(--s3);
-  }
-
-  #esc-embed .hdr-title em { font-style: normal; color: var(--amber); }
-
-  #esc-embed .hdr-desc {
-    font-size: 0.8125rem;
-    color: var(--text-2);
-    max-width: 52ch;
-    line-height: 1.7;
-  }
-
-  #esc-embed .legend {
-    display: flex;
-    flex-direction: column;
-    gap: var(--s2);
-    align-items: flex-end;
-  }
-
-  #esc-embed .legend-item {
-    display: flex;
-    align-items: center;
-    gap: var(--s2);
-    font-size: 11px;
-    color: var(--text-3);
-  }
-
-  #esc-embed .legend-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  /* ────────────────────────────────────────
-     FLOW LABEL (above each workflow)
-  ──────────────────────────────────────── */
-  #esc-embed .flow-label {
-    margin-bottom: var(--s4);
-  }
-
-  #esc-embed .flow-label .fl-eyebrow {
-    font-family: var(--fd);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--text-3);
-    margin-bottom: 4px;
-  }
-
-  #esc-embed .flow-label h2 {
-    font-family: var(--fd);
-    font-size: 1.375rem;
-    font-weight: 800;
-    line-height: 1.1;
-    color: var(--text-1);
-  }
-
-  #esc-embed .flow-label h2 em { font-style: normal; color: var(--amber); }
-  #esc-embed .flow-label h2 em.teal { color: var(--teal); }
-
-  #esc-embed .flow-label .fl-desc {
-    margin-top: var(--s2);
-    font-size: 0.8125rem;
-    color: var(--text-2);
-    max-width: 68ch;
-    line-height: 1.65;
-  }
-
-  /* ────────────────────────────────────────
-     WORKFLOW GRID — 3 phase columns
-  ──────────────────────────────────────── */
-  #esc-embed .workflow {
-    display: grid;
-    grid-template-columns: 1fr 44px 1.3fr 44px 1.5fr;
-    align-items: start;
-    margin-bottom: var(--s7);
-  }
-
-  /* ────────────────────────────────────────
-     PHASE COLUMN
-  ──────────────────────────────────────── */
-  #esc-embed .pcol {
-    background: var(--surface);
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-
-  #esc-embed .pcol-hdr {
-    padding: var(--s4) var(--s4) var(--s3);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: baseline;
-    gap: var(--s3);
-    background: var(--surface-hi);
-  }
-
-  #esc-embed .pcol-n {
-    font-family: var(--fd);
-    font-size: 2rem;
-    font-weight: 800;
-    line-height: 1;
-    color: var(--border-hi);
-    font-variant-numeric: tabular-nums;
-    min-width: 2rem;
-    flex-shrink: 0;
-  }
-
-  #esc-embed .pcol-n.teal {
-    color: color-mix(in srgb, var(--cbre-sage) 55%, var(--cbre-dark-green));
-  }
-
-  #esc-embed .pcol-name {
-    font-family: var(--fd);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-3);
-  }
-
-  #esc-embed .pcol-body {
-    padding: var(--s4);
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    flex: 1;
-  }
-
-  /* ────────────────────────────────────────
-     PHASE CONNECTOR ARROW
-  ──────────────────────────────────────── */
-  #esc-embed .pconn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 52px; /* aligns roughly with first step */
-    gap: var(--s1);
-  }
-
-  #esc-embed .pconn-line {
-    width: 1px;
-    flex: 1;
-    max-height: 24px;
-    background: var(--border-hi);
-  }
-
-  #esc-embed .pconn-arrow {
-    width: 0;
-    height: 0;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-left: 7px solid var(--border-hi);
-  }
-
-  /* Full horizontal connector line */
-  #esc-embed .pconn::before {
-    content: '';
-    width: 100%;
-    height: 1px;
-    background: var(--border-hi);
-    margin-top: -1px;
-  }
-
-  /* Simpler approach — just use the element itself */
-  #esc-embed .pconn {
-    position: relative;
-    padding-top: 50px;
-  }
-
-  #esc-embed .pconn-inner {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    width: 100%;
-  }
-
-  #esc-embed .pconn-inner::before {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border-hi);
-  }
-
-  #esc-embed .pconn-inner::after {
-    content: '';
-    width: 0;
-    height: 0;
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
-    border-left: 6px solid var(--border-hi);
-  }
-
-  /* ────────────────────────────────────────
-     STEP (within a phase column)
-  ──────────────────────────────────────── */
-  #esc-embed .step {
-    display: grid;
-    grid-template-columns: 26px 1fr;
-    gap: var(--s2) var(--s3);
-    padding: var(--s3) 0;
-    align-items: start;
-  }
-
-  #esc-embed .step + .step {
-    border-top: 1px solid var(--border);
-  }
-
-  #esc-embed .sn {
-    width: 26px; height: 26px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--fd);
-    font-size: 10px;
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  #esc-embed .sn.cs { background: var(--cs-bg);   color: var(--cs); }
-  #esc-embed .sn.l1 { background: var(--l1-bg);   color: var(--l1); }
-  #esc-embed .sn.l2 { background: var(--l2-bg);   color: var(--l2); }
-  #esc-embed .sn.prod { background: var(--prod-bg); color: var(--prod); }
-  #esc-embed .sn.di { background: var(--teal-bg); color: var(--teal); }
-
-  #esc-embed .sb { min-width: 0; }
-
-  #esc-embed .st-row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: var(--s2);
-    margin-bottom: 3px;
-  }
-
-  #esc-embed .st {
-    font-family: var(--fd);
-    font-size: 0.9375rem;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    color: var(--text-1);
-    line-height: 1.2;
-    flex: 1;
-  }
-
-  #esc-embed .sd {
-    font-size: 0.75rem;
-    color: var(--text-2);
-    line-height: 1.6;
-  }
-
-  #esc-embed .ot {
-    font-family: var(--fd);
-    font-size: 8px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 2px 7px;
-    border-radius: 3px;
-    white-space: nowrap;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  #esc-embed .ot.cs { background: var(--cs-bg);   color: var(--cs); }
-  #esc-embed .ot.l1 { background: var(--l1-bg);   color: var(--l1); }
-  #esc-embed .ot.l2 { background: var(--l2-bg);   color: var(--l2); }
-  #esc-embed .ot.prod { background: var(--prod-bg); color: var(--prod); }
-  #esc-embed .ot.di { background: var(--teal-bg); color: var(--teal); }
-
-  /* ────────────────────────────────────────
-     DECISION GATE (compact, within column)
-  ──────────────────────────────────────── */
-  #esc-embed .gate {
-    margin: var(--s2) 0;
-    background: var(--amber-bg);
-    border-radius: 5px;
-    overflow: hidden;
-  }
-
-  #esc-embed .gate.teal-gate { background: var(--teal-bg); }
-
-  #esc-embed .gate-q {
-    padding: var(--s2) var(--s3);
-    font-family: var(--fd);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--amber);
-    display: flex;
-    align-items: center;
-    gap: var(--s2);
-  }
-
-  #esc-embed .gate-q.teal-q { color: var(--teal); }
-
-  #esc-embed .gate-icon {
-    width: 14px; height: 14px;
-    border-radius: 50%;
-    background: var(--amber);
-    color: var(--bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 8px;
-    font-weight: 800;
-    flex-shrink: 0;
-  }
-
-  #esc-embed .gate-icon.teal-icon { background: var(--teal); }
-
-  #esc-embed .gate-outcomes {
-    display: flex;
-    flex-direction: column;
-  }
-
-  #esc-embed .gate-out {
-    padding: var(--s2) var(--s3);
-    display: flex;
-    align-items: baseline;
-    gap: var(--s2);
-    font-size: 0.75rem;
-    color: var(--text-2);
-    line-height: 1.45;
-  }
-
-  #esc-embed .gate-out + .gate-out {
-    border-top: 1px solid var(--border);
-  }
-
-  #esc-embed .gate-lbl {
-    font-family: var(--fd);
-    font-size: 8px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    flex-shrink: 0;
-  }
-
-  #esc-embed .gate-lbl.yes { color: var(--green); }
-  #esc-embed .gate-lbl.no { color: var(--red); }
-  #esc-embed .gate-lbl.alt { color: var(--teal); }
-
-  /* Step connector within column */
-  #esc-embed .step-conn {
-    height: var(--s3);
-    padding-left: 13px;
-  }
-
-  #esc-embed .step-conn::before {
-    content: '';
-    display: block;
-    width: 1px;
-    height: 100%;
-    background: var(--border);
-  }
-
-  #esc-embed .step-conn.warn::before { background: var(--red); }
-
-  /* ────────────────────────────────────────
-     CRITERIA PANEL (compact for column)
-  ──────────────────────────────────────── */
-  #esc-embed .criteria {
-    background: var(--amber-bg);
-    border-radius: 5px;
-    padding: var(--s3) var(--s4);
-    margin-bottom: var(--s3);
-  }
-
-  #esc-embed .criteria.teal { background: var(--teal-bg); }
-
-  #esc-embed .criteria-lbl {
-    font-family: var(--fd);
-    font-size: 8px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--amber-soft);
-    margin-bottom: var(--s3);
-  }
-
-  #esc-embed .criteria-lbl.teal { color: var(--teal); }
-
-  #esc-embed .crit-list { display: flex; flex-direction: column; gap: var(--s2); }
-
-  #esc-embed .crit {
-    border-radius: 7px;
-    padding: var(--s3) var(--s4);
-    position: relative;
-    transition: filter 0.15s ease;
-    /* color set per variant below */
-  }
-  #esc-embed .crit:hover { filter: brightness(1.07); }
-
-  /* A — Accent Green */
-  #esc-embed .crit-a {
-    background: color-mix(in srgb, var(--trig-a) 8%, var(--bg));
-    border: 1px solid color-mix(in srgb, var(--trig-a) 30%, var(--bg));
-  }
-  /* B — Wheat */
-  #esc-embed .crit-b {
-    background: color-mix(in srgb, var(--trig-b) 8%, var(--bg));
-    border: 1px solid color-mix(in srgb, var(--trig-b) 30%, var(--bg));
-  }
-  /* C — Celadon */
-  #esc-embed .crit-c {
-    background: color-mix(in srgb, var(--trig-c) 8%, var(--bg));
-    border: 1px solid color-mix(in srgb, var(--trig-c) 30%, var(--bg));
-  }
-
-  #esc-embed .crit-hd {
-    display: flex;
-    align-items: center;
-    gap: var(--s2);
-    margin-bottom: 5px;
-  }
-
-  #esc-embed .cn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 22px;
-    height: 22px;
-    flex-shrink: 0;
-    border-radius: 5px;
-    font-family: var(--fd);
-    font-size: 0.6875rem;
-    font-weight: 800;
-    letter-spacing: 0;
-  }
-  #esc-embed .cn-a {
-    background: color-mix(in srgb, var(--trig-a) 18%, var(--bg));
-    border: 1px solid color-mix(in srgb, var(--trig-a) 45%, var(--bg));
-    color: var(--trig-a);
-  }
-  #esc-embed .cn-b {
-    background: color-mix(in srgb, var(--trig-b) 18%, var(--bg));
-    border: 1px solid color-mix(in srgb, var(--trig-b) 45%, var(--bg));
-    color: var(--trig-b);
-  }
-  #esc-embed .cn-c {
-    background: color-mix(in srgb, var(--trig-c) 18%, var(--bg));
-    border: 1px solid color-mix(in srgb, var(--trig-c) 45%, var(--bg));
-    color: var(--trig-c);
-  }
-
-  #esc-embed .ct {
-    font-family: var(--fd);
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: var(--text-1);
-    line-height: 1.2;
-  }
-
-  #esc-embed .cd { font-size: 0.74rem; color: var(--text-2); line-height: 1.55; padding-left: 30px; }
-
-  /* ────────────────────────────────────────
-     ESCALATION PROTOCOL (compact)
-  ──────────────────────────────────────── */
-  #esc-embed .esc-panel {
-    background: var(--red-bg);
-    border-radius: 5px;
-    padding: var(--s3) var(--s4);
-    margin-bottom: var(--s3);
-  }
-
-  #esc-embed .esc-lbl {
-    font-family: var(--fd);
-    font-size: 8px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: var(--s3);
-  }
-
-  #esc-embed .esc-list { display: flex; flex-direction: column; gap: var(--s3); }
-
-  #esc-embed .esc-step {
-    display: grid;
-    grid-template-columns: 20px 1fr;
-    gap: var(--s2);
-    align-items: start;
-  }
-
-  #esc-embed .esn {
-    width: 18px; height: 18px;
-    border-radius: 50%;
-    background: var(--red);
-    color: var(--bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--fd);
-    font-size: 9px;
-    font-weight: 800;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  #esc-embed .est {
-    font-family: var(--fd);
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: var(--text-1);
-    margin-bottom: 2px;
-  }
-
-  #esc-embed .esd { font-size: 0.75rem; color: var(--text-2); line-height: 1.55; }
-
-  #esc-embed .esc-owners {
-    display: flex;
-    gap: var(--s1);
-    flex-wrap: wrap;
-    margin-top: var(--s1);
-  }
-
-  /* ────────────────────────────────────────
-     RESOLUTION BLOCK
-  ──────────────────────────────────────── */
-  #esc-embed .resolve {
-    background: var(--green-bg);
-    border-radius: 5px;
-    padding: var(--s3) var(--s4);
-    text-align: center;
-    margin-top: auto; /* push to bottom if column is flex */
-  }
-
-  #esc-embed .resolve.teal { background: var(--teal-bg); }
-
-  #esc-embed .resolve-t {
-    font-family: var(--fd);
-    font-size: 0.9375rem;
-    font-weight: 700;
-    color: var(--green);
-    margin-bottom: 3px;
-  }
-
-  #esc-embed .resolve-t.teal { color: var(--teal); }
-
-  #esc-embed .resolve-d { font-size: 0.75rem; color: var(--text-2); line-height: 1.55; }
-
-  /* ────────────────────────────────────────
-     FLOW SEPARATOR
-  ──────────────────────────────────────── */
-  #esc-embed .flow-sep {
-    display: flex;
-    align-items: center;
-    gap: var(--s4);
-    margin: var(--s7) 0 var(--s5);
-  }
-
-  #esc-embed .flow-sep::before, #esc-embed .flow-sep::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  #esc-embed .flow-sep-label {
-    font-family: var(--fd);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-3);
-    white-space: nowrap;
-    padding: 4px 14px;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-  }
-
-  /* ────────────────────────────────────────
-     FOOTER
-  ──────────────────────────────────────── */
-  #esc-embed .site-footer {
-    margin-top: var(--s8);
-    padding-top: var(--s5);
-    border-top: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: var(--s6);
-  }
-
-  #esc-embed .fb-title {
-    font-family: var(--fd);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-3);
-    margin-bottom: var(--s3);
-  }
-
-  #esc-embed .fb-item { font-size: 12px; color: var(--text-2); line-height: 1.9; }
-  #esc-embed .fb-item .role { color: var(--text-3); margin-left: 4px; }
-
-  /* ────────────────────────────────────────
-     RESPONSIVE — stack columns on narrow screens
-  ──────────────────────────────────────── */
-  @media (max-width: 860px) {
-    #esc-embed { padding: var(--s5) var(--s4) var(--s8); font-size: 13px; }
-
-    #esc-embed .hdr { flex-direction: column; align-items: flex-start; }
-    #esc-embed .legend { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
-
-    #esc-embed .workflow {
-      grid-template-columns: 1fr;
-    }
-
-    #esc-embed .pconn { display: none; }
-
-    #esc-embed .pcol + .pcol {
-      margin-top: var(--s3);
-    }
-
-    #esc-embed .pcol-hdr .pcol-n { font-size: 1.5rem; }
-  }
-
-</style>
-<div class="page">
-
-<!-- ══════════════════════════════
-     HEADER
-══════════════════════════════ -->
-<header class="hdr">
-  <div class="hdr-left">
-    <div class="eyebrow">Analytics Platform · Internal Operations</div>
-    <h1 class="hdr-title">Data Issue <em>Escalation</em> Framework</h1>
-    <p class="hdr-desc">Standard operating procedure for triaging pipeline failures and data integrity issues, with defined escalation triggers and a leadership protocol when normal resolution breaks down.</p>
-  </div>
-  <div class="legend">
-    <div class="legend-item"><div class="legend-dot" style="background:var(--cs)"></div>Client Success</div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--l1)"></div>Olympic · L1</div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--l2)"></div>Core / Redwood · L2</div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--prod)"></div>Product</div>
-  </div>
-</header>
-
-
-<!-- ══════════════════════════════
-     FLOW 1 — PIPELINE ISSUES
-══════════════════════════════ -->
-<div class="flow-label">
-  <div class="fl-eyebrow">Pipeline Issues — Stale data, incomplete loads, ingestion failures</div>
-  <h2><em>Pipeline</em> Escalation Path</h2>
-</div>
-
-<div class="workflow">
-
-  <!-- Phase 1 -->
-  <div class="pcol">
-    <div class="pcol-hdr">
-      <span class="pcol-n">01</span>
-      <span class="pcol-name">Detection &amp; Intake</span>
-    </div>
-    <div class="pcol-body">
-
-      <div class="step">
-        <div class="sn cs">01</div>
-        <div class="sb">
-          <div class="st-row">
-            <div class="st">Issue Detected</div>
-            <span class="ot cs">CS</span>
-          </div>
-          <div class="sd">Client reports anomaly, or monitoring flags stale or incomplete data. CS confirms and documents impact scope.</div>
-        </div>
-      </div>
-
-      <div class="step-conn"></div>
-
-      <div class="step">
-        <div class="sn cs">02</div>
-        <div class="sb">
-          <div class="st-row">
-            <div class="st">Jira Ticket Created</div>
-            <span class="ot cs">CS</span>
-          </div>
-          <div class="sd">CS opens ticket with: issue type, affected client(s), data range, detection timestamp, and initial severity.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Arrow 1→2 -->
-  <div class="pconn"><div class="pconn-inner"></div></div>
-
-  <!-- Phase 2 -->
-  <div class="pcol">
-    <div class="pcol-hdr">
-      <span class="pcol-n">02</span>
-      <span class="pcol-name">Tiered Resolution</span>
-    </div>
-    <div class="pcol-body">
-
-      <div class="step">
-        <div class="sn l1">03</div>
-        <div class="sb">
-          <div class="st-row">
-            <div class="st">Olympic Group — First Response</div>
-            <span class="ot l1">Olympic · L1</span>
-          </div>
-          <div class="sd">Triages ticket. Handles known, repeatable pipeline issues within defined SLA window.</div>
-        </div>
-      </div>
-
-      <div class="gate">
-        <div class="gate-q"><div class="gate-icon">?</div>Resolved by Olympic (L1)?</div>
-        <div class="gate-outcomes">
-          <div class="gate-out"><span class="gate-lbl yes">YES</span> Ticket closed. Document fix. Notify CS to confirm with client.</div>
-          <div class="gate-out"><span class="gate-lbl no">NO</span> Escalate to Core / Redwood for deeper investigation → Step 04</div>
-        </div>
-      </div>
-
-      <div class="step-conn"></div>
-
-      <div class="step">
-        <div class="sn l2">04</div>
-        <div class="sb">
-          <div class="st-row">
-            <div class="st">Core / Redwood — Deep Investigation</div>
-            <span class="ot l2">Core / Redwood · L2</span>
-          </div>
-          <div class="sd">Examines pipeline logic, ingestion errors, and source-to-destination discrepancies at infrastructure level.</div>
-        </div>
-      </div>
-
-      <div class="gate">
-        <div class="gate-q"><div class="gate-icon">?</div>Resolved by Core / Redwood (L2)?</div>
-        <div class="gate-outcomes">
-          <div class="gate-out"><span class="gate-lbl yes">YES</span> Ticket closed. Document root cause. Notify CS to confirm with client.</div>
-          <div class="gate-out"><span class="gate-lbl no">NO</span> Issue exits normal flow → leadership escalation triggered in Phase 03</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Arrow 2→3 -->
-  <div class="pconn"><div class="pconn-inner"></div></div>
-
-  <!-- Phase 3 -->
-  <div class="pcol">
-    <div class="pcol-hdr">
-      <span class="pcol-n">03</span>
-      <span class="pcol-name">Leadership Escalation</span>
-    </div>
-    <div class="pcol-body">
-
-      <div class="criteria">
-        <div class="criteria-lbl">Triggers — any one activates this phase</div>
-        <div class="crit-list">
-          <div class="crit crit-a">
-            <div class="crit-hd"><div class="cn cn-a">A</div><div class="ct">Client Severity Level</div></div>
-            <div class="cd">Issue affects a Tier 1 or enterprise client. Escalate immediately, do not wait for the L2 window to expire.</div>
-          </div>
-          <div class="crit crit-b">
-            <div class="crit-hd"><div class="cn cn-b">B</div><div class="ct">Scope of Impact</div></div>
-            <div class="cd">Three or more clients affected, or two or more data sources compromised in the same incident.</div>
-          </div>
-          <div class="crit crit-c">
-            <div class="crit-hd"><div class="cn cn-c">C</div><div class="ct">Recurring Issue Pattern</div></div>
-            <div class="cd">Same issue type at L1 or L2 more than once in a 30-day window — signals a systemic problem.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="esc-panel">
-        <div class="esc-lbl">Leadership Protocol — 2-Week Resolution Cadence</div>
-        <div class="esc-list">
-          <div class="esc-step">
-            <div class="esn">1</div>
-            <div>
-              <div class="est">Alert Leadership <span style="font-weight:400;font-size:0.7rem;opacity:0.7;">— Immediate</span></div>
-              <div class="esd">CS Lead and Eng Lead notified simultaneously: ticket ID, issue type, time open, last action, and client impact summary. Slack + email required.</div>
-              <div class="esc-owners"><span class="ot cs">CS Lead</span><span class="ot l2">Eng Lead</span></div>
-            </div>
-          </div>
-          <div class="esc-step">
-            <div class="esn">2</div>
-            <div>
-              <div class="est">Kickoff Session <span style="font-weight:400;font-size:0.7rem;opacity:0.7;">— Within 24 hrs</span></div>
-              <div class="esd">30-min standing call: align on root cause, assign one accountable owner per side, confirm client comms approach. Set twice-weekly check-in schedule (Mon &amp; Thu).</div>
-              <div class="esc-owners"><span class="ot cs">CS Lead</span><span class="ot l2">Eng Lead</span></div>
-            </div>
-          </div>
-          <div class="esc-step">
-            <div class="esn">3</div>
-            <div>
-              <div class="est">Week 1 Check-ins <span style="font-weight:400;font-size:0.7rem;opacity:0.7;">— Mon &amp; Thu</span></div>
-              <div class="esd">Structured 20-min syncs: (1) resolution progress since last call, (2) active blockers and owners, (3) client-facing status update needed? Product Lead joins if a product rule change is in scope.</div>
-              <div class="esc-owners"><span class="ot cs">CS Lead</span><span class="ot l2">Eng Lead</span></div>
-            </div>
-          </div>
-          <div class="esc-step">
-            <div class="esn">4</div>
-            <div>
-              <div class="est">Week 2 Check-ins <span style="font-weight:400;font-size:0.7rem;opacity:0.7;">— Mon &amp; Thu · Day 14 Gate</span></div>
-              <div class="esd">Same agenda as Week 1. If issue remains open at the Day 14 Monday call, leads must decide: extend escalation with a new owner, escalate further up the chain, or formally document a delayed-resolution plan with client notification.</div>
-              <div class="esc-owners"><span class="ot cs">CS Lead</span><span class="ot l2">Eng Lead</span></div>
-            </div>
-          </div>
-          <div class="esc-step">
-            <div class="esn">5</div>
-            <div>
-              <div class="est">Post-Resolution Retrospective <span style="font-weight:400;font-size:0.7rem;opacity:0.7;">— Once Closed</span></div>
-              <div class="esd">Lightweight retro within 5 business days of close: was this a process gap, tooling failure, or recurring pattern? Findings logged and shared with Product for backlog consideration.</div>
-              <div class="esc-owners"><span class="ot cs">CS Lead</span><span class="ot l2">Eng Lead</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="resolve">
-        <div class="resolve-t">✓ Issue Resolved &amp; Closed</div>
-        <div class="resolve-d">Ticket updated. CS confirms with client. Learnings logged.</div>
-      </div>
-
-    </div>
-  </div>
-
-</div><!-- /workflow -->
-
-
-<!-- ══════════════════════════════
-     FOOTER
-══════════════════════════════ -->
-<footer class="site-footer">
-  <div>
-    <div class="fb-title">Teams</div>
-    <div class="fb-item">Client Success <span class="role">intake + comms</span></div>
-    <div class="fb-item">Data Engineering <span class="role">pipeline ops</span></div>
-    <div class="fb-item">Product <span class="role">looped in as needed</span></div>
-  </div>
-  <div>
-    <div class="fb-title">Resolution Tiers</div>
-    <div class="fb-item">Olympic <span class="role">L1 · first response</span></div>
-    <div class="fb-item">Core / Redwood <span class="role">L2 · deep investigation</span></div>
-  </div>
-  <div>
-    <div class="fb-title">Escalation Owners</div>
-    <div class="fb-item">CS Lead <span class="role">client impact + comms</span></div>
-    <div class="fb-item">Eng Lead <span class="role">resolution ownership</span></div>
-  </div>
-  <div>
-    <div class="fb-title">Open Items</div>
-    <div class="fb-item">SLA thresholds per tier <span class="role">pending</span></div>
-    <div class="fb-item">Notification method <span class="role">pending</span></div>
-    <div class="fb-item">Tier 1 client list <span class="role">pending</span></div>
-  </div>
-</footer>
-
-</div><!-- /page -->
-</div>
-</div>
 
 <div id="tab-about" class="tab-panel"><div class="content">
   <div class="about-hero"><h2>Platform Quality &amp; Reliability Program</h2><p>A 160-day structured initiative to eliminate root-cause failures, enforce quality standards, clarify ownership, and bring Tableau workbook performance within acceptable thresholds across all CBRE clients.</p></div>
@@ -1413,13 +430,13 @@ const workstreams=[
    deliverables:['Issue taxonomy',{text:'Top 15 root cause list',done:true},'Burn-down tracker','Escalation flow','Kill list'],
    tasks:[{phase:'P1',text:'Categorize 300 issues/month',pri:'High',done:true},{phase:'P1',text:'Identify Top 15 failure patterns',pri:'High',done:true},{phase:'P1',text:'Publish issue taxonomy',pri:'High'},{phase:'P1',text:'Create burn-down tracker',pri:'High'},{phase:'P2',text:'Escalation flow diagram',pri:'Med'},{phase:'P2',text:'Build alert kill list',pri:'High'},{phase:'P2',text:'Document MS scope',pri:'Med'},{phase:'P3',text:'Set up recurring MS incident review',pri:'High'}]},
   {icon:'✅',color:'#D1FAE5',name:'Story / QA Redesign',owner:'Megan Lane',target:'90% of Olympic JIRA stories meet QA standards',hasBriefing:false,
-   stats:[{val:'81.3%',lbl:'Stories Rewritten',sub:'352 of 424 tickets'},{val:'100%',lbl:'QA Subtasks Added',sub:'433 of 433 tickets'},{val:'32',lbl:'JIRA Templates',sub:'Core & Custom scenarios'},{val:'Kanban',lbl:'Board Type',sub:'Jon approved — plan in progress'}],
-   recentUpdate:{date:'Jun 8, 2026',items:['32 JIRA story templates created for common CORE & Custom scenarios — includes Description, Acceptance Criteria, QA Subtasks with expected test cases and actions, Expected Results, and Proof expectations on CORE Deliverables','352 of 424 applicable story tickets rewritten in expected story format including description and acceptance criteria — covers full BASS Backlog (custom and core), excludes problem tickets (81.3%)','433 of 433 applicable story & problem tickets have necessary QA Test Case Creation and QA Execution Subtasks — covers full BASS Backlog (custom and core), excludes requirements, analysis, documentation, and admin type stories (100%)','Jon approved moving forward with Kanban instead of Sprint type board — working on change management plan and timeline','Finalizing scoring rubric for Gagan\'s reporting tool aligned with Kanban processes — meeting with Gagan this week to begin report development']},
-   deliverables:[{text:'QA checklist per job type',done:true},{text:'Updated delivery template',done:true},{text:'QA sign-off expectations',done:true},{text:'Lightweight QA artifacts',done:true}],
-   tasks:[{phase:'P1',text:'Define standard QA gates',pri:'High',done:true},{phase:'P1',text:'Implement new Story standards w/ Alan',pri:'High',done:true},{phase:'P2',text:'Update delivery story template',pri:'High',done:true},{phase:'P2',text:'Introduce lightweight QA artifacts',pri:'Med',done:true},{phase:'P2',text:'Publish QA checklist per job type',pri:'High',done:true},{phase:'P2',text:'Enforce QA on all new Core stories',pri:'High',done:true},{phase:'P3',text:'Align with enhanced Story process',pri:'Med'},{phase:'P3',text:'Gagan report: 75% of stories on track for QA compliance',pri:'High'},{phase:'P3',text:'Gagan report: 85% of stories on track for QA compliance',pri:'High'},{phase:'P4',text:'Gagan report: 90% of stories meeting QA standards — program goal',pri:'High'}]},
-  {icon:'🔄',color:'#FEF3C7',name:'Operating Model Alignment',owner:'Chris Jack',target:'Planned work not sabotaged by reactive fire drills',hasBriefing:false,workflow:true,workflowLink:'https://miro.com/app/board/uXjVHY5lPe0=/',
-   recentUpdate:{date:'Jun 9, 2026',items:['Analysis completed: 744 Problem/Bug + Managed Services tickets in scope, classified into 7 functional categories (Job/Pipeline Failure, Data Quality, Access, etc.)','SLA baselining shows medians running 2.7–3.9x above benchmark in worst categories — Data Quality/Refresh at ~3.9x overhead','Root-cause review of 45–98 day outlier tickets confirms near-zero logged effort — tickets stall waiting on clients/source systems, not team capacity','New milestone roadmap live: escalation path (Jul 13), SLA dashboard (Jul 27), inflow reduction (Aug 10), knowledge base (Aug 24), sustain & clean-up (Sep 7)']},
-   deliverables:[{text:'RACI for MS / Core / Olympic',done:true},{text:'Scope & dataset definition (744 tickets)',done:true},{text:'Ticket categorization model (7 categories)',done:true},{text:'SLA baselining & benchmarking vs. ITIL',done:true},{text:'Root-cause review of worst tickets',done:true},'Escalation path for aging tickets','Quick-monitor SLAs & dashboard','Mandatory root cause + category (knowledge base)','Reduce inflow & manage dependencies','Sustain, clean up & reduce noise'],
+   stats:[{val:'99.8%',lbl:'Stories Rewritten',sub:'422 of 423 tickets'},{val:'100%',lbl:'QA Subtasks Added',sub:'437 of 437 tickets'},{val:'38',lbl:'JIRA Templates',sub:'Created & live'},{val:'Kanban',lbl:'Migration In Progress',sub:'Change mgmt plan + scoring rubric'}],
+   recentUpdate:{date:'June 24, 2026',items:['38 JIRA story templates created','Story rewrites at 99.8% (422/423) — full BASS backlog, both custom and core, rewritten in expected story format with descriptions and acceptance criteria (excludes problem tickets)','QA Test Case Creation & QA Execution subtasks at 100% (437/437 applicable story & problem tickets)','Working on Change Management Plan to migrate from sprint to Kanban','Finalizing scoring rubric for Gagan\'s reporting tool aligned with Kanban processes — per Gagan, <1 week to implement following BASS migration to Kanban and submission of finalized rubric']},
+   deliverables:[{text:'QA checklist per job type',done:true},'Updated delivery template',{text:'QA sign-off expectations',done:true},{text:'Lightweight QA artifacts',done:true}],
+   tasks:[{phase:'P1',text:'Define standard QA gates',pri:'High',done:true},{phase:'P1',text:'Implement new Story standards w/ Alan',pri:'High',done:true},{phase:'P2',text:'Update delivery story template',pri:'High',done:true},{phase:'P2',text:'Introduce lightweight QA artifacts',pri:'Med',done:true},{phase:'P2',text:'Publish QA checklist per job type',pri:'High',done:true},{phase:'P3',text:'Deliver updated hand-off template',pri:'Med'},{phase:'P3',text:'Align with enhanced Story process',pri:'Med'}]},
+  {icon:'🔄',color:'#FEF3C7',name:'Operating Model Alignment',owner:'Chris Jack',target:'Get resolution on track — escalate aging tickets & make SLA breaches visible',hasBriefing:false,workflow:true,workflowLink:'https://miro.com/app/board/uXjVHY5lPe0=/',
+   recentUpdate:{date:'June 2026',items:['Analysis complete — scoped 744 Problem/Bug + Managed Services tickets with an auditable Jira-linked detail table','Classified every ticket into 7 functional categories (Job/Pipeline Failure, Data Quality, Access, etc.)','SLA baselining: median/P75/P90 lead time & effort per category — medians run 2.7–3.9x ITIL/ITSM benchmark in the worst categories','Root-cause finding: 45–98 day outliers have near-zero logged effort — tickets sit unresolved waiting on clients / source systems / 3rd parties; the gap is escalation, not headcount','Next (Jul–Sep): aging-ticket escalation path (116 tickets past 1.5x SLA today), RAG SLA dashboard (only 41% of tickets have usable dates), root-cause + category knowledge base, proactive data-quality checks & named dependency owners, and bucket cleanup to reduce noise']},
+   deliverables:[{text:'Scope & 7-category model (744 tickets)',done:true},{text:'SLA baselines & benchmarking',done:true},{text:'Root-cause review of aging tickets',done:true},'Aging-ticket escalation path','RAG SLA dashboard','Categorized root-cause knowledge base'],
    raci:{title:'Ticket Failure Process RACI',roles:['Mesos Agent','Managed Services','Alan Kehoe','Junior Olympic Team','Senior Olympic Team','Core Team','DBA Team'],rows:[
      {step:'Detect job failure',cells:['R','R/A','I','I','I','I',null]},
      {step:'Attempt automatic restart',cells:['R','R/A','I','I','I','I',null]},
@@ -1436,16 +453,16 @@ const workstreams=[
      {step:'Engage DBA via chat channel',cells:[null,null,'A',null,'R/A','I','R']},
      {step:'Close incident / ticket',cells:[null,null,'A','R','R','R',null]},
    ]},
-   tasks:[{phase:'P1',text:'Meet with Core team on sprint planning',pri:'High',done:true},{phase:'P2',text:'Publish RACI for MS / Core / Olympic',pri:'High',done:true},{phase:'P2',text:'Scope & dataset definition — 744 in-scope tickets, auditable Jira detail table',pri:'High',done:true},{phase:'P2',text:'Ticket categorization model — 7 functional categories classified',pri:'High',done:true},{phase:'P3',text:'SLA baselining & benchmarking — median/P75/P90 vs. ITIL benchmark',pri:'High',done:true},{phase:'P3',text:'Root-cause review of worst tickets — 45–98 day outliers analyzed',pri:'High',done:true},{phase:'P3',text:'Escalation path for aging tickets (flag at 1.5x category SLA, auto-escalate stalled tickets)',pri:'High'},{phase:'P3',text:'Quick-monitor SLAs & dashboard (RAG view refreshed daily, mandate date fields)',pri:'High'},{phase:'P4',text:'Reduce inflow & manage dependencies (proactive data-quality checks, source-system owners)',pri:'High'},{phase:'P4',text:'Mandatory root cause + category on every resolved ticket + knowledge base',pri:'High'},{phase:'P4',text:'Sustain, clean up & reduce noise (re-tag buckets, weekly breach review, recurring → permanent fixes)',pri:'Med'}]},
+   tasks:[{phase:'P2',text:'Define scope & dataset (744 Problem/Bug + MS tickets)',pri:'High',done:true},{phase:'P2',text:'Build 7-category ticket classification model',pri:'High',done:true},{phase:'P3',text:'SLA baselining & benchmarking vs. ITIL/ITSM',pri:'High',done:true},{phase:'P3',text:'Root-cause review of 45–98 day outliers',pri:'High',done:true},{phase:'P4',text:'Stand up aging-ticket escalation path (flag at 1.5x SLA)',pri:'High'},{phase:'P4',text:'Quick-monitor SLAs + RAG dashboard',pri:'High'},{phase:'P4',text:'Mandatory root cause + category knowledge base',pri:'Med'},{phase:'P4',text:'Reduce inflow & manage source-system dependencies',pri:'High'},{phase:'P4',text:'Sustain, clean up buckets & reduce noise',pri:'Med'}]},
   {icon:'🔧',color:'#FEE2E2',name:'Recurring Issue Elimination',owner:'Dan Hernandez',target:'90% reduction in highest-volume recurring failures',hasBriefing:false,
-   recentUpdate:{date:'Jun 9, 2026',items:['Root Cause 1 — Data Sync from IFMhub to EDP STDB using EDP 1.0 framework as a Monolithic Job: FIXED via EDP 2.0 Srv Config framework [AZ-8403]','Root Cause 2 — Pipeline Execution delays due to IFM Hub Replay: replayed datapoints not required for Vantage reporting were still triggering EDP upserts and downstream BI MT DM sync/refresh. Fix: implement Source Record change-hash logic before upserts in EDP [AZ-8411] — ETA Jun 8, confirming status','SLA stabilized — confirmed by Naj Bhanpurawala','Alan Kehoe facilitating Steve W. & Emily Fisher in regular open-ticket reviews']},
-   deliverables:[{text:'Root-cause analysis',done:true},{text:'Permanent-fix stories — RC1 fixed (AZ-8403)',done:true},'RC2 fix — change-hash logic (AZ-8411)','Reduction plan','Prevention standards'],
-   tasks:[{phase:'P1',text:'Coordinate needs from IFM hub',pri:'High',done:true},{phase:'P1',text:'Separate recurring vs. one-off incidents',pri:'High',done:true},{phase:'P2',text:'Root-cause analysis on top drivers',pri:'High',done:true},{phase:'P2',text:'RC1 fix — EDP 1.0 monolithic job → EDP 2.0 Srv Config framework [AZ-8403]',pri:'High',done:true},{phase:'P3',text:'RC2 fix — Source Record change-hash logic before EDP upserts to stop IFM Hub replay triggering downstream [AZ-8411]',pri:'High'},{phase:'P3',text:'Convert remaining recurring incidents to permanent-fix backlog',pri:'High'},{phase:'P3',text:'Deliver reduction plan',pri:'Med'},{phase:'P4',text:'Develop prevention standards',pri:'Med'}]},
-  {icon:'⚡',color:'#EDE9FE',name:'Tableau Performance Remediation',owner:'John Hernandez',target:'Remediate 337 remaining workbooks to < 8s by Sep 30',hasBriefing:false,
-   stats:[{val:'55',lbl:'Workbooks Remaining',sub:'115 revised baseline · 60 completed'},{val:'60',lbl:'Completed by May',sub:'End-of-May milestone hit'},{val:'115',lbl:'Revised Baseline',sub:'Down from 337 prior scope'},{val:'70',lbl:'JIRA Tickets',sub:'Assigned & active'}],
-   recentUpdate:{date:'May 26, 2026',items:['Revised baseline confirmed at 115 workbooks (down from 337) — reflects updated in-scope count per Optimization Schedule May 2026','60 workbooks completed by end of May — on pace against revised schedule','55 workbooks remaining across Phase 1 critical and Phase 2 bad/slow tiers','Prior scope of 337 reflected broader audit; 115 revised baseline represents finalized Vantage-owned remediation target']},
+   recentUpdate:{date:'May 13, 2026',items:['Emily Fisher to send Dan list of IFM Hub participants for recurring sync on IFM Hub changes & existing data attributes — also to coordinate related EDP enhancements planning','Alan Kehoe to facilitate Steve W. & Emily Fisher reviewing open tickets on a regular basis','IFM dependency active — ETA expected from Pratish call; will unblock permanent-fix backlog conversion','STTM (UI → DB → DM) being obtained to better scope client support impact']},
+   deliverables:['Root-cause analysis','Permanent-fix stories','Reduction plan','Prevention standards'],
+   tasks:[{phase:'P1',text:'Coordinate needs from IFM hub',pri:'High',done:true},{phase:'P1',text:'Separate recurring vs. one-off incidents',pri:'High',done:true},{phase:'P2',text:'Root-cause analysis on top drivers',pri:'High',done:true},{phase:'P2',text:'Convert recurring incidents to permanent-fix backlog',pri:'High'},{phase:'P3',text:'Implement structural fixes',pri:'High'},{phase:'P3',text:'Deliver reduction plan',pri:'Med'},{phase:'P4',text:'Develop prevention standards',pri:'Med'}]},
+  {icon:'⚡',color:'#EDE9FE',name:'Tableau Performance Remediation',owner:'John Hernandez',target:'Optimize identified Vantage workbooks to < 8s — 95% complete (94 of 99)',hasBriefing:false,
+   stats:[{val:'95%',lbl:'Workbooks Optimized',sub:'94 of 99 assessed'},{val:'5',lbl:'In Remediation',sub:'Remaining — scheduled July'},{val:'41',lbl:'Vantage Sites',sub:'Requiring optimization'},{val:'115',lbl:'Workbooks Flagged',sub:'Critical / bad / slow ratings'}],
+   recentUpdate:{date:'June 2026',items:['Baseline adjustment — majority of workbooks rated critical, bad or slow align with account-team development (account-owned), narrowing Vantage optimization scope','115 workbooks flagged for improvement (critical/bad/slow performance); 41 sites identified as needing Vantage workbook optimization','99 workbooks assessed to date — 94 successfully optimized, 5 remaining in remediation processing (95% complete)','Outstanding July optimization: Mars Inc (15, Bryan — highly customized, partnering with Angela), Mondelez (3, RJ), Kenvue (2, Bryan — transitioning to Kimberly Clark), Barings (1, Joseph — LA dashboard), Northern Trust Global FM (1, Riley — BACS-27981)','All accounts (Vantage- or account-owned) received communication on any workbook at critical/bad/slow performance']},
    deliverables:['Severity-tiered remediation plan','Critical workbooks remediated','Bad + Slow workbooks remediated','Ownership attribution'],
-   tasks:[{phase:'P1',text:'Prioritize by severity tier',pri:'High',done:true},{phase:'P1',text:'Distinguish Vantage vs Account-developed',pri:'High',done:true},{phase:'P2',text:'Execute Phase 1: Critical workbooks',pri:'High'},{phase:'P3',text:'Execute Phase 2: Bad + Slow workbooks',pri:'High'},{phase:'P3',text:'Coordinate across 93 clients / APAC',pri:'High'},{phase:'P4',text:'Complete all 115 revised-baseline workbooks',pri:'High'},{phase:'P4',text:'Validate and document ownership',pri:'Med'}]}
+   tasks:[{phase:'P1',text:'Prioritize by severity tier',pri:'High',done:true},{phase:'P1',text:'Distinguish Vantage vs Account-developed',pri:'High',done:true},{phase:'P2',text:'Execute Phase 1: Critical workbooks',pri:'High'},{phase:'P3',text:'Execute Phase 2: Bad + Slow workbooks',pri:'High'},{phase:'P3',text:'Coordinate across 93 clients / APAC',pri:'High'},{phase:'P4',text:'Complete all 337 remaining workbooks',pri:'High'},{phase:'P4',text:'Validate and document ownership',pri:'Med'}]}
 ];
 const TL_TOTAL=169;
 const tlWS=[
@@ -1462,7 +479,7 @@ const tlMilestones=[
   ['Program',13,'Core sprint planning meeting held',true],
   ['Program',20,'Baseline metrics locked',true],
   ['Program',23,'Phase 1 exit / Phase 2 launch',true],
-  ['Program',42,'Phase 2 exec checkpoint readout',true],
+  ['Program',42,'Phase 2 exec checkpoint readout',false],
   ['Program',80,'Validate ≤50/month run rate',false],
   ['Program',85,'Phase 3 exec readout',false],
   ['Program',93,'Embed QA & alerting in onboarding',false],
@@ -1474,40 +491,36 @@ const tlMilestones=[
   ['M&A',25,'Suppress non-actionable alerts',true],
   ['M&A',25,'Escalate JIRA BASS-16457 (schema mismatch)',true],
   ['M&A',25,'Escalate JIRA BASS-16564 (Tririga API)',true],
-  ['M&A',39,'Launch live burn-down dashboard',true],
+  ['M&A',39,'Launch live burn-down dashboard',false],
   ['M&A',74,'Refine alerting — 30-day false-pos review',false],
   ['Story/QA',9,'Define standard QA gates',true],
   ['Story/QA',12,'Implement new Story standards w/ Alan',true],
-  ['Story/QA',24,'Lightweight QA artifacts complete (20 JIRA templates)',true],
+  ['Story/QA',24,'Lightweight QA artifacts complete (38 JIRA templates)',true],
+  ['Story/QA',32,'Enforce QA on all new Core stories',true],
   ['Story/QA',39,'Publish QA checklist + delivery template',true],
   ['Story/QA',70,'Add preventative QA checks',false],
-  ['Story/QA',75,'Gagan report: 75% stories on track for QA compliance',false],
   ['Story/QA',88,'QA Standards v2 finalized',false],
-  ['Story/QA',105,'Gagan report: 85% stories on track for QA compliance',false],
-  ['Story/QA',145,'Gagan report: 90% stories meeting QA standards — program goal hit',false],
-  ['OpModel',12,'Draft RACI v1',true],
-  ['OpModel',30,'Scope & dataset definition complete (744 tickets)',true],
-  ['OpModel',42,'Final RACI published',true],
-  ['OpModel',45,'Ticket categorization model complete (7 categories)',true],
-  ['OpModel',55,'SLA baselining & benchmarking complete',true],
-  ['OpModel',70,'Root-cause review of worst tickets complete',true],
-  ['OpModel',91,'Escalation path for aging tickets',false],
-  ['OpModel',105,'Quick-monitor SLAs & dashboard',false],
+  ['OpModel',30,'Scope & dataset defined (744 Problem/Bug + MS tickets)',true],
+  ['OpModel',33,'Ticket categorization model (7 categories)',true],
+  ['OpModel',50,'SLA baselining & benchmarking (2.7–3.9x benchmark)',true],
+  ['OpModel',58,'Root-cause review of worst tickets (45–98 day outliers)',true],
+  ['OpModel',91,'Escalation path for aging tickets (flag at 1.5x SLA)',false],
+  ['OpModel',105,'Quick-monitor SLAs & RAG dashboard',false],
   ['OpModel',119,'Reduce inflow & manage dependencies',false],
-  ['OpModel',133,'Mandatory root cause + category (knowledge base)',false],
+  ['OpModel',133,'Mandatory root cause + category knowledge base',false],
   ['OpModel',147,'Sustain, clean up & reduce noise',false],
   ['Recurring',15,'Finalize recurring issues list',true],
   ['Recurring',15,'Coordinate IFM hub fix',true],
   ['Recurring',22,'Root-cause analysis on top drivers',true],
-  ['Recurring',35,'RC1 fixed — EDP 2.0 Srv Config replaces monolithic job [AZ-8403]',true],
+  ['Recurring',35,'Top 3 repeat failure patterns fixed',false],
   ['Recurring',57,'Re-rank recurring backlog by impact',false],
   ['Recurring',66,'Top 5 additional failures fixed',false],
   ['Recurring',102,'Legacy recurring backlog cleared',false],
   ['Tableau',21,'Severity tier list complete (Crit/Bad/Slow)',true],
-  ['Tableau',50,'APAC mobilized — remediation wave starts',true],
-  ['Tableau',60,'60 workbooks completed — end-of-May milestone',true],
-  ['Tableau',61,'Phase 2 Tableau remediation starts (Bad + Slow)',false],
-  ['Tableau',169,'All 115 revised-baseline workbooks <8s validated',false],
+  ['Tableau',50,'APAC mobilized — remediation wave starts',false],
+  ['Tableau',60,'94 of 99 identified workbooks optimized (95%)',true],
+  ['Tableau',61,'Baseline adjusted — scope narrowed to Vantage-owned',true],
+  ['Tableau',169,'All identified Vantage workbooks <8s — 5 remaining (July)',false],
 ];
 const tlPhases=[
   {s:0,e:12.43,c:'#2563EB',l:'Phase 1'},
@@ -1519,7 +532,7 @@ const tlMonths=[
   {l:'Apr 13',p:0},{l:'May',p:10.65},{l:'Jun',p:28.99},
   {l:'Jul',p:46.75},{l:'Aug',p:65.09},{l:'Sep',p:83.43},{l:'Sep 30',p:100},
 ];
-const TODAY_PCT=(()=>{const start=new Date('2026-04-13T00:00:00');const now=new Date();const day=Math.max(0,Math.min(TL_TOTAL,Math.floor((now-start)/(1000*60*60*24))));return(day/TL_TOTAL*100).toFixed(2);})();
+const TODAY_PCT=(26/TL_TOTAL*100).toFixed(2);
 
 function buildTimeline(){
   const container=document.getElementById('milestone-timeline');
@@ -1589,18 +602,18 @@ const windows=[
    items:[{date:'Apr 13',ws:'Program',task:'Kickoff + standing cadences established',owner:'John Hernandez',output:'Weekly cadence live',done:true},{date:'Apr 17',ws:'Monitoring & Alerting',task:'Categorize last 90 days into Noise / Repeat / Client-Impacting',owner:'John Hernandez',output:'Issue taxonomy',done:true},{date:'Apr 20',ws:'Monitoring & Alerting',task:'Identify Top 15 true failure patterns with root causes',owner:'John Hernandez',output:'Top 15 list',done:true},{date:'Apr 22',ws:'Story / QA',task:'Define standard QA story & gates',owner:'Megan Lane',output:'QA gate definitions',done:true},{date:'Apr 25',ws:'Operating Model',task:'Draft RACI v1 (MS / Core / Olympic)',owner:'Chris Jack',output:'v1 RACI',done:true},{date:'Apr 25',ws:'Story / QA',task:'Work with Alan to implement new Story standards',owner:'Megan Lane',output:'Story standards live',done:true},{date:'Apr 25',ws:'Program',task:'Set up recurring MS incident review meeting',owner:'John Hernandez',output:'Standing meeting live',done:true},{date:'Apr 26',ws:'Program',task:'Meet with Core team on sprint planning process',owner:'Chris Jack',output:'Sprint planning aligned',done:true}]},
   {id:'w1',label:'Phase 1 Close — Final Baseline Lock',dates:'Apr 27 – May 4, 2026',phase:'Phase 1',phaseColor:'#2563EB',phaseBg:'#DBEAFE',
    items:[{date:'Apr 28',ws:'Recurring Issues',task:'Separate recurring vs. one-off — finalize list',owner:'Dan Hernandez',output:'Recurring list locked',done:true},{date:'Apr 28',ws:'Recurring Issues',task:'Coordinate IFM hub fix for major root cause',owner:'Dan Hernandez',output:'IFM fix scoped',done:true},{date:'May 3',ws:'Program',task:'Baseline metrics locked — issue volume, noise%, repeat%, CI% documented',owner:'John Hernandez',output:'Baseline metrics doc',done:true},{date:'May 4',ws:'Monitoring & Alerting',task:'Publish issue taxonomy (1-page) and burn-down tracker',owner:'John Hernandez',output:'Taxonomy published',done:true},{date:'May 4',ws:'Tableau Performance',task:'Severity tier list complete — Critical/Bad/Slow',owner:'John Hernandez',output:'Workbook tier list',done:true}]},
-  {id:'w2',label:'Phase 2 Open — Enforce & Suppress',dates:'May 5 – May 18, 2026',phase:'Phase 2',phaseColor:'#7C3AED',phaseBg:'#EDE9FE',
-   items:[{date:'May 6',ws:'Program',task:'Phase 1 exit review + Phase 2 enforcement confirmed',owner:'John Hernandez',output:'Phase 2 go-live',done:true},{date:'May 7',ws:'Story / QA',task:'Lightweight QA artifacts complete — 12 JIRA templates created',owner:'Megan Lane',output:'QA templates live',done:true},{date:'May 7',ws:'Story / QA',task:'Olympic team trained on QA sign-off expectations',owner:'Megan Lane',output:'Team trained; execution by May 15',done:true},{date:'May 8',ws:'Monitoring & Alerting',task:'Suppress non-actionable alerts: tesla-landing, SI7 checkpoints, envizi stage count',owner:'John Hernandez',output:'Alert volume reduced',done:true},{date:'May 8',ws:'Monitoring & Alerting',task:'Escalate JIRA BASS-16457 with SLA',owner:'John Hernandez',output:'JIRA SLA enforced',done:true},{date:'May 8',ws:'Monitoring & Alerting',task:'Escalate JIRA BASS-16564 with SLA',owner:'Dan Hernandez',output:'JIRA SLA enforced',done:true},{date:'May 15',ws:'Story / QA',task:'Enforce QA standards on all new Core stories',owner:'Megan Lane',output:'QA compliance live',done:true},{date:'May 13',ws:'Recurring Issues',task:'Call with Pratish & team — get ETA on IFM process communication changes + STTM (UI → DB → DM)',owner:'Dan Hernandez',output:'IFM ETA locked; STTM documented'}]},
+  {id:'w2',label:'Phase 2 Open — Enforce & Suppress',dates:'May 5 – May 18, 2026',phase:'Phase 2',phaseColor:'#7C3AED',phaseBg:'#EDE9FE',current:true,
+   items:[{date:'May 6',ws:'Program',task:'Phase 1 exit review + Phase 2 enforcement confirmed',owner:'John Hernandez',output:'Phase 2 go-live',done:true},{date:'May 7',ws:'Story / QA',task:'Lightweight QA artifacts complete — 12 JIRA templates created',owner:'Megan Lane',output:'QA templates live',done:true},{date:'May 7',ws:'Story / QA',task:'Olympic team trained on QA sign-off expectations',owner:'Megan Lane',output:'Team trained; execution by May 15',done:true},{date:'May 8',ws:'Monitoring & Alerting',task:'Suppress non-actionable alerts: tesla-landing, SI7 checkpoints, envizi stage count',owner:'John Hernandez',output:'Alert volume reduced',done:true},{date:'May 8',ws:'Monitoring & Alerting',task:'Escalate JIRA BASS-16457 with SLA',owner:'John Hernandez',output:'JIRA SLA enforced',done:true},{date:'May 8',ws:'Monitoring & Alerting',task:'Escalate JIRA BASS-16564 with SLA',owner:'Dan Hernandez',output:'JIRA SLA enforced',done:true},{date:'May 15',ws:'Story / QA',task:'Enforce QA standards on all new Core stories',owner:'Megan Lane',output:'QA compliance live'},{date:'May 13',ws:'Recurring Issues',task:'Call with Pratish & team — get ETA on IFM process communication changes + STTM (UI → DB → DM)',owner:'Dan Hernandez',output:'IFM ETA locked; STTM documented'},{date:'May 14',ws:'Operating Model',task:'Define scope & dataset — 744 Problem/Bug + Managed Services tickets',owner:'Chris Jack',output:'Auditable Jira-linked detail table',done:true},{date:'May 16',ws:'Operating Model',task:'Classify tickets into 7 functional categories',owner:'Chris Jack',output:'Categorization model',done:true}]},
   {id:'w3',label:'Phase 2 Close — First Fixes & Checkpoint',dates:'May 19 – May 31, 2026',phase:'Phase 2',phaseColor:'#7C3AED',phaseBg:'#EDE9FE',
-   items:[{date:'May 18',ws:'Recurring Issues',task:'Permanent fixes for top 3 repeat failure patterns',owner:'Dan Hernandez',output:'First drivers removed'},{date:'May 22',ws:'Monitoring & Alerting',task:'Launch live issue & alert burn-down dashboard',owner:'John Hernandez',output:'Burn-down tracker live',done:true},{date:'May 22',ws:'Story / QA',task:'Publish QA checklist + updated delivery template',owner:'Megan Lane',output:'QA checklist published',done:true},{date:'May 25',ws:'Program',task:'Phase 2 checkpoint — exec readout',owner:'John Hernandez',output:'Exec readout delivered',done:true},{date:'May 25',ws:'Operating Model',task:'Final RACI published (MS / Core / Olympic)',owner:'Chris Jack',output:'Final RACI live',done:true},{date:'May 25',ws:'Operating Model',task:'SLAs established for acknowledgment vs. resolution',owner:'Chris Jack',output:'SLAs active',done:true}]},
-  {id:'w4',label:'Phase 3 Open — Systemic Fixes Begin',dates:'Jun 1 – Jun 22, 2026',phase:'Phase 3',phaseColor:'#D97706',phaseBg:'#FEF3C7',current:true,
-   items:[{date:'Jun 2',ws:'Tableau Performance',task:'Tableau remediation kickoff — APAC mobilized',owner:'John Hernandez',output:'Execution live',done:true},{date:'Jun 9',ws:'Recurring Issues',task:'Re-rank recurring backlog by volume & client impact',owner:'Dan Hernandez',output:'Prioritized fix roadmap'},{date:'Jun 12',ws:'Tableau Performance',task:'Phase 1 critical workbooks complete — revised 115 baseline scope',owner:'John Hernandez',output:'Critical tier done'},{date:'Jun 13',ws:'Tableau Performance',task:'Phase 2 Tableau remediation starts (Bad + Slow)',owner:'John Hernandez',output:'Phase 2 underway'},{date:'Jun 18',ws:'Recurring Issues',task:'Fixes for top 5 additional failure patterns',owner:'Dan Hernandez',output:'Majority repeat drivers removed'},{date:'Jun 22',ws:'Story / QA',task:'Add preventative QA checks for resolved patterns',owner:'Megan Lane',output:'Fail-before-prod coverage'}]},
+   items:[{date:'May 18',ws:'Recurring Issues',task:'Permanent fixes for top 3 repeat failure patterns',owner:'Dan Hernandez',output:'First drivers removed'},{date:'May 22',ws:'Monitoring & Alerting',task:'Launch live issue & alert burn-down dashboard',owner:'John Hernandez',output:'Burn-down tracker live'},{date:'May 22',ws:'Story / QA',task:'Publish QA checklist + updated delivery template',owner:'Megan Lane',output:'QA checklist published'},{date:'May 25',ws:'Program',task:'Phase 2 checkpoint — exec readout',owner:'John Hernandez',output:'Exec readout delivered'},{date:'May 30',ws:'Operating Model',task:'SLA baselining & benchmarking vs. ITIL/ITSM best practice',owner:'Chris Jack',output:'Median-based SLA targets (medians 2.7–3.9x benchmark)',done:true}]},
+  {id:'w4',label:'Phase 3 Open — Systemic Fixes Begin',dates:'Jun 1 – Jun 22, 2026',phase:'Phase 3',phaseColor:'#D97706',phaseBg:'#FEF3C7',
+   items:[{date:'Jun 2',ws:'Tableau Performance',task:'Tableau remediation kickoff — APAC mobilized',owner:'John Hernandez',output:'Execution live'},{date:'Jun 9',ws:'Recurring Issues',task:'Re-rank recurring backlog by volume & client impact',owner:'Dan Hernandez',output:'Prioritized fix roadmap'},{date:'Jun 12',ws:'Tableau Performance',task:'Critical workbooks done (>16s) — 288 workbooks',owner:'John Hernandez',output:'288 workbooks done'},{date:'Jun 13',ws:'Tableau Performance',task:'Phase 2 Tableau remediation starts (Bad + Slow)',owner:'John Hernandez',output:'Phase 2 underway'},{date:'Jun 14',ws:'Operating Model',task:'Root-cause review of 45–98 day outliers — near-zero logged effort',owner:'Chris Jack',output:'Confirmed gap is escalation, not headcount',done:true},{date:'Jun 18',ws:'Recurring Issues',task:'Fixes for top 5 additional failure patterns',owner:'Dan Hernandez',output:'Majority repeat drivers removed'},{date:'Jun 22',ws:'Story / QA',task:'Add preventative QA checks for resolved patterns',owner:'Megan Lane',output:'Fail-before-prod coverage'}]},
   {id:'w5',label:'Phase 3 Close — Validate & Align',dates:'Jun 23 – Jul 13, 2026',phase:'Phase 3',phaseColor:'#D97706',phaseBg:'#FEF3C7',
-   items:[{date:'Jun 26',ws:'Monitoring & Alerting',task:'Refine alerting — 30-day false-positive review',owner:'John Hernandez',output:'Signal-only alert set'},{date:'Jul 2',ws:'Program',task:'Validate ≤50/month run rate — on track confirmation',owner:'John Hernandez',output:'Stability confirmed'},{date:'Jul 7',ws:'Program',task:'Phase 3 exec readout: trending data, reliability metrics',owner:'John Hernandez',output:'Leadership alignment'},{date:'Jul 10',ws:'Story / QA',task:'QA Standards v2 — all known failure patterns covered',owner:'Megan Lane',output:'QA Standards v2'},{date:'Jul 13',ws:'Operating Model',task:'Escalation path for aging tickets — aging thresholds per category, auto-escalate stalled tickets, track days since last update',owner:'Chris Jack',output:'Active escalation model'}]},
-  {id:'w6',label:'Phase 4 — Institutionalize & Close',dates:'Jul 14 – Sep 7, 2026',phase:'Phase 4',phaseColor:'#059669',phaseBg:'#D1FAE5',
-   items:[{date:'Jul 15',ws:'Program',task:'Embed QA & alerting in client onboarding',owner:'John Hernandez',output:'Self-sustaining adoption'},{date:'Jul 24',ws:'Recurring Issues',task:'Close legacy recurring backlog',owner:'Dan Hernandez',output:'Legacy backlog cleared'},{date:'Jul 27',ws:'Operating Model',task:'Quick-monitor SLAs & dashboard — RAG dashboard live, SLA targets adopted, date fields mandated',owner:'Chris Jack',output:'SLA visibility live'},{date:'Jul 31',ws:'Program',task:'Executive before/after reliability readout',owner:'John Hernandez',output:'Proven impact presented'},{date:'Aug 7',ws:'Program',task:'Formal transition to steady-state governance',owner:'John Hernandez',output:'Program complete'},{date:'Aug 10',ws:'Operating Model',task:'Reduce inflow & manage dependencies — proactive data-quality checks, source-system owners named, blocked-by tracking',owner:'Chris Jack',output:'Inflow reduction active'},{date:'Aug 24',ws:'Operating Model',task:'Mandatory root cause + category on every resolved ticket — knowledge base built, similar tickets surfaced at intake',owner:'Chris Jack',output:'Knowledge base live'},{date:'Sep 7',ws:'Operating Model',task:'Sustain, clean up & reduce noise — re-tag buckets, weekly breach + aging review, recurring root causes → permanent fixes',owner:'Chris Jack',output:'Steady-state operating rhythm'}]},
+   items:[{date:'Jun 26',ws:'Monitoring & Alerting',task:'Refine alerting — 30-day false-positive review',owner:'John Hernandez',output:'Signal-only alert set'},{date:'Jul 2',ws:'Program',task:'Validate ≤50/month run rate — on track confirmation',owner:'John Hernandez',output:'Stability confirmed'},{date:'Jul 7',ws:'Program',task:'Phase 3 exec readout: trending data, reliability metrics',owner:'John Hernandez',output:'Leadership alignment'},{date:'Jul 10',ws:'Story / QA',task:'QA Standards v2 — all known failure patterns covered',owner:'Megan Lane',output:'QA Standards v2'},{date:'Jul 13',ws:'Operating Model',task:'Stand up aging-ticket escalation path — flag at 1.5x category SLA',owner:'Chris Jack',output:'116 aging tickets actioned; auto-escalate to named owner'}]},
+  {id:'w6',label:'Phase 4 — Institutionalize & Close',dates:'Jul 14 – Aug 7, 2026',phase:'Phase 4',phaseColor:'#059669',phaseBg:'#D1FAE5',
+   items:[{date:'Jul 15',ws:'Program',task:'Embed QA & alerting in client onboarding',owner:'John Hernandez',output:'Self-sustaining adoption'},{date:'Jul 27',ws:'Operating Model',task:'Quick-monitor SLAs + daily RAG dashboard',owner:'Chris Jack',output:'Breaches visible (only 41% have usable dates today)'},{date:'Aug 10',ws:'Operating Model',task:'Reduce inflow & manage source-system dependencies',owner:'Chris Jack',output:'Proactive DQ checks; named owners (Maximo, IFM, Archibus, Vantage, Corrigo)'},{date:'Aug 24',ws:'Operating Model',task:'Mandatory root cause + category on every resolved ticket',owner:'Chris Jack',output:'Categorized root-cause knowledge base'},{date:'Sep 7',ws:'Operating Model',task:'Sustain — bucket cleanup & noise reduction',owner:'Chris Jack',output:'Clean intake; weekly breach/aging review'},{date:'Jul 24',ws:'Recurring Issues',task:'Close legacy recurring backlog',owner:'Dan Hernandez',output:'Legacy backlog cleared'},{date:'Jul 31',ws:'Program',task:'Executive before/after reliability readout',owner:'John Hernandez',output:'Proven impact presented'},{date:'Aug 7',ws:'Program',task:'Formal transition to steady-state governance',owner:'John Hernandez',output:'Program complete'}]},
   {id:'w7',label:'Tableau Final Milestone',dates:'Sep 30, 2026',phase:'Tableau',phaseColor:'#7C3AED',phaseBg:'#EDE9FE',
-   items:[{date:'Sep 30',ws:'Tableau Performance',task:'All 115 revised-baseline workbooks within <8s — clients validated',owner:'John Hernandez',output:'Program complete'}]}
+   items:[{date:'Sep 30',ws:'Tableau Performance',task:'All 582 workbooks within <8s — 93 clients validated',owner:'John Hernandez',output:'Program complete'}]}
 ];
 const wsColors={'Program':'#F0F4F8','Monitoring & Alerting':'#DBEAFE','Story / QA':'#D1FAE5','Operating Model':'#FEF3C7','Recurring Issues':'#FEE2E2','Tableau Performance':'#EDE9FE'};
 const wsTextColors={'Program':'#4A5568','Monitoring & Alerting':'#1D4ED8','Story / QA':'#065F46','Operating Model':'#92400E','Recurring Issues':'#991B1B','Tableau Performance':'#5B21B6'};
@@ -1854,29 +867,10 @@ workstreams.forEach((ws,idx)=>{
     if(ws.stats){statsHtml=`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;padding:12px 14px;background:${ws.color};border-radius:8px;border:1px solid ${sBorder};">${ws.stats.map(s=>`<div style="flex:1;min-width:90px;text-align:center;padding:4px 6px;"><div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:800;color:${sAccent};line-height:1">${s.val}</div><div style="font-size:10px;font-weight:700;color:var(--navy);margin-top:2px;text-transform:uppercase;letter-spacing:.4px">${s.lbl}</div><div style="font-size:10px;color:var(--muted);margin-top:1px">${s.sub}</div></div>`).join('')}</div>`;}
     let updateHtml='';
     if(ws.recentUpdate){updateHtml=`<div style="margin-top:10px;background:${ws.color};border-radius:8px;border-left:3px solid ${sAccent};padding:10px 14px;"><div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px;">📋 Latest Update — ${ws.recentUpdate.date}</div>${ws.recentUpdate.items.map(item=>`<div style="font-size:11px;color:var(--gray);padding:2px 0 2px 14px;position:relative;line-height:1.5;"><span style="position:absolute;left:0;color:${sAccent};font-weight:700;">·</span>${item}</div>`).join('')}</div>`;}
-    const recurringChartsHtml=ws.name==='Recurring Issue Elimination'?`
-      <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div style="background:var(--gray-light);border-radius:8px;padding:12px 14px;">
-          <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:10px;">📈 Historical Ticket Volume</div>
-          <div style="position:relative;height:180px;"><canvas id="recurringBurndown"></canvas></div>
-        </div>
-        <div style="background:var(--gray-light);border-radius:8px;padding:12px 14px;">
-          <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:10px;">📊 Composition + Reduction Roadmap</div>
-          <div style="position:relative;height:180px;"><canvas id="recurringBreakdown"></canvas></div>
-        </div>
-      </div>`:'';
-    bodyContent=`${statsHtml}<div class="ws-tasks">${th}</div><div class="deliverables"><div class="del-title">📦 Key Deliverables</div>${dh}</div>${raciHtml}${workflowHtml}${updateHtml}${recurringChartsHtml}`;
+    bodyContent=`${statsHtml}<div class="ws-tasks">${th}</div><div class="deliverables"><div class="del-title">📦 Key Deliverables</div>${dh}</div>${raciHtml}${workflowHtml}${updateHtml}`;
   }
   wsCards.innerHTML+=`<div class="ws-card" id="wsc-${idx}"><div class="ws-header" onclick="toggleWS(${idx})"><div class="ws-left"><div class="ws-icon" style="background:${ws.color}">${ws.icon}</div><div><div class="ws-title">${ws.name}${ws.hasBriefing?' <span style="font-size:9.5px;background:var(--green-light);color:var(--green);padding:1px 6px;border-radius:10px;font-weight:600;margin-left:6px;">Phase 1 Data Live</span>':''}</div><div class="ws-owner">Owner: ${ws.owner}</div></div></div><div class="ws-right"><span class="ws-target-badge">${ws.target}</span><span class="phase-status status-active" style="font-size:10px">● Active</span><span class="ws-chevron">▼</span></div></div><div class="ws-body">${bodyContent}</div></div>`;
 });
-
-// Recurring Issues inline charts
-(function(){
-  const rCtx=document.getElementById('recurringBurndown');
-  const r2Ctx=document.getElementById('recurringBreakdown');
-  if(rCtx){new Chart(rCtx.getContext('2d'),{type:'line',data:{labels:["Aug '25","Sep '25","Oct '25","Nov '25","Dec '25","Jan '26","Feb '26","Mar '26","Apr '26","May '26","Jun '26"],datasets:[{label:'Actual Tickets/Month',data:[264,282,325,319,317,350,279,237,178,148,null],borderColor:'#1C2B3A',backgroundColor:'rgba(28,43,58,.06)',borderWidth:2,fill:true,tension:.3,pointBackgroundColor:'#1C2B3A',pointRadius:3},{label:'Target',data:[264,282,325,319,317,350,279,222,165,108,50],borderColor:'#006A4D',borderWidth:2,borderDash:[5,4],fill:false,tension:.1,pointRadius:2,pointBackgroundColor:'#006A4D'},{label:'Goal (≤50)',data:[50,50,50,50,50,50,50,50,50,50,50],borderColor:'#DC2626',borderWidth:1.5,borderDash:[6,4],fill:false,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:9},boxWidth:8}}},scales:{y:{beginAtZero:true,grid:{color:'#F0F0F0'},ticks:{font:{size:9}}},x:{grid:{color:'#F0F0F0'},ticks:{font:{size:9}}}}}});}
-  if(r2Ctx){new Chart(r2Ctx.getContext('2d'),{type:'bar',data:{labels:["Aug '25","Sep '25","Oct '25","Nov '25","Dec '25","Jan '26","Feb '26","Mar '26","Apr '26","May '26","Jun '26"],datasets:[{label:'Noise',type:'bar',data:[160,156,207,181,190,219,141,153,101,75,null],backgroundColor:'rgba(217,119,6,0.75)',stack:'t',order:2},{label:'Repeat',type:'bar',data:[65,52,37,36,41,47,32,39,54,50,null],backgroundColor:'rgba(220,38,38,0.75)',stack:'t',order:2},{label:'Client-Impacting',type:'bar',data:[39,74,81,102,86,84,106,45,23,23,null],backgroundColor:'rgba(28,43,58,0.80)',stack:'t',order:2},{label:'Target',type:'line',data:[264,282,325,319,317,350,279,222,165,108,50],borderColor:'#006A4D',borderWidth:2,borderDash:[5,4],fill:false,tension:.2,pointRadius:2,stack:undefined,order:1},{label:'Goal ≤50',type:'line',data:[50,50,50,50,50,50,50,50,50,50,50],borderColor:'#DC2626',borderWidth:1.5,borderDash:[6,4],fill:false,pointRadius:0,stack:undefined,order:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:9},boxWidth:8}},tooltip:{mode:'index',intersect:false}},scales:{x:{stacked:true,grid:{color:'#F0F0F0'},ticks:{font:{size:9}}},y:{stacked:true,beginAtZero:true,grid:{color:'#F0F0F0'},ticks:{font:{size:9}}}}}});}
-})();
 
 const totalMil=tlMilestones.length;
 const p1Mil=tlMilestones.filter(m=>m[1]<=21);
@@ -1886,15 +880,15 @@ const p4Mil=tlMilestones.filter(m=>m[1]>85);
 const p1Count=p1Mil.length,p2Count=p2Mil.length,p3Count=p3Mil.length,p4Count=p4Mil.length;
 const p1Done=p1Mil.filter(m=>m[3]).length,p2Done=p2Mil.filter(m=>m[3]).length,p3Done=p3Mil.filter(m=>m[3]).length;
 const idealRem=[totalMil,totalMil-p1Count,totalMil-p1Count-p2Count,totalMil-p1Count-p2Count-p3Count,0];
-const actualRem=[totalMil,totalMil-p1Done,totalMil-p1Done-p2Done,totalMil-p1Done-p2Done-p3Done,null];
+const actualRem=[totalMil,totalMil-(p1Done+p2Done+p3Done),null,null,null];
 const ctx3=document.getElementById('actionBurndownChart').getContext('2d');
-new Chart(ctx3,{data:{labels:[['Program Start','Apr 13'],['Phase 1 End','May 4'],['Phase 2 End','May 25'],['Phase 3 End','Jul 7'],['Program End','Sep 30']],datasets:[{type:'bar',label:'Items Due This Phase',data:[null,p1Count,p2Count,p3Count,p4Count],backgroundColor:['rgba(0,0,0,0)','rgba(37,99,235,.72)','rgba(124,58,237,.72)','rgba(217,119,6,.72)','rgba(5,150,105,.72)'],borderColor:['transparent','#2563EB','#7C3AED','#D97706','#059669'],borderWidth:1.5,borderRadius:4,yAxisID:'y2',order:3},{type:'line',label:'Ideal Burndown',data:idealRem,borderColor:'#006A4D',backgroundColor:'rgba(0,106,77,.06)',borderWidth:2,borderDash:[5,4],fill:true,tension:.2,pointBackgroundColor:'#006A4D',pointRadius:4,pointHoverRadius:6,yAxisID:'y',order:1},{type:'line',label:'Actual Progress',data:actualRem,borderColor:'#1C2B3A',backgroundColor:'rgba(28,43,58,.07)',borderWidth:2.5,fill:false,tension:.15,pointBackgroundColor:'#1C2B3A',pointRadius:5,pointHoverRadius:7,yAxisID:'y',order:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{family:'Arial',size:10},boxWidth:10}},tooltip:{callbacks:{title:(items)=>{const lbls=['Program Start (Apr 13)','Phase 1 End (May 4)','Phase 2 End (May 25)','Phase 3 End (Jul 7)','Program End (Sep 30)'];return lbls[items[0].dataIndex];},afterBody:(items)=>{const i=items[0].dataIndex;const msgs=[`${totalMil} total milestones across 6 workstreams`,`Phase 1 — ${p1Done} of ${p1Count} done · ${p1Count-p1Done} remaining`,`Phase 2 — ${p2Done} of ${p2Count} done · ${p2Count-p2Done} remaining`,`Phase 3 — ${p3Done} of ${p3Count} done · ${p3Count-p3Done} remaining · In Progress`,`Phase 4 — ${p4Count} items upcoming`];return[msgs[i]];}}}},scales:{y:{beginAtZero:true,max:Math.ceil(totalMil*1.1),title:{display:true,text:'Remaining Milestones',font:{size:10}},grid:{color:'#F0F0F0'},ticks:{font:{size:10}}},y2:{position:'right',beginAtZero:true,max:Math.ceil(Math.max(p1Count,p2Count,p3Count,p4Count)*1.4),title:{display:true,text:'Items This Phase',font:{size:10}},grid:{drawOnChartArea:false},ticks:{font:{size:10}}},x:{grid:{color:'#F0F0F0'},ticks:{font:{size:10}}}}}});
+new Chart(ctx3,{data:{labels:[['Program Start','Apr 13'],['Phase 1 End','May 4'],['Phase 2 End','May 25'],['Phase 3 End','Jul 7'],['Program End','Sep 30']],datasets:[{type:'bar',label:'Items Due This Phase',data:[null,p1Count,p2Count,p3Count,p4Count],backgroundColor:['rgba(0,0,0,0)','rgba(37,99,235,.72)','rgba(124,58,237,.72)','rgba(217,119,6,.72)','rgba(5,150,105,.72)'],borderColor:['transparent','#2563EB','#7C3AED','#D97706','#059669'],borderWidth:1.5,borderRadius:4,yAxisID:'y2',order:3},{type:'line',label:'Ideal Burndown',data:idealRem,borderColor:'#006A4D',backgroundColor:'rgba(0,106,77,.06)',borderWidth:2,borderDash:[5,4],fill:true,tension:.2,pointBackgroundColor:'#006A4D',pointRadius:4,pointHoverRadius:6,yAxisID:'y',order:1},{type:'line',label:'Actual Progress',data:actualRem,borderColor:'#1C2B3A',backgroundColor:'rgba(28,43,58,.07)',borderWidth:2.5,fill:false,tension:.15,pointBackgroundColor:'#1C2B3A',pointRadius:5,pointHoverRadius:7,yAxisID:'y',order:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{family:'Arial',size:10},boxWidth:10}},tooltip:{callbacks:{title:(items)=>{const lbls=['Program Start (Apr 13)','Phase 1 End (May 4)','Phase 2 End (May 25)','Phase 3 End (Jul 7)','Program End (Sep 30)'];return lbls[items[0].dataIndex];},afterBody:(items)=>{const i=items[0].dataIndex;const msgs=[`${totalMil} total milestones across 6 workstreams`,`Target: ${p1Count} items · Completed: ${p1Done} · Remaining: ${p1Count-p1Done} · In progress`,`Target: ${p2Count} items · Phase upcoming`,`Target: ${p3Count} items · Phase upcoming`,`Target: ${p4Count} items · Phase upcoming`];return[msgs[i]];}}}},scales:{y:{beginAtZero:true,max:Math.ceil(totalMil*1.1),title:{display:true,text:'Remaining Milestones',font:{size:10}},grid:{color:'#F0F0F0'},ticks:{font:{size:10}}},y2:{position:'right',beginAtZero:true,max:Math.ceil(Math.max(p1Count,p2Count,p3Count,p4Count)*1.4),title:{display:true,text:'Items This Phase',font:{size:10}},grid:{drawOnChartArea:false},ticks:{font:{size:10}}},x:{grid:{color:'#F0F0F0'},ticks:{font:{size:10}}}}}});
 
 const ctx=document.getElementById('burndownChart').getContext('2d');
-new Chart(ctx,{type:'line',data:{labels:["Aug '25","Sep '25","Oct '25","Nov '25","Dec '25","Jan '26","Feb '26","Mar '26","Apr '26","May '26","Jun '26"],datasets:[{label:'Actual Tickets/Month',data:[264,282,325,319,317,350,279,237,178,148,null],borderColor:'#1C2B3A',backgroundColor:'rgba(28,43,58,.06)',borderWidth:2,fill:true,tension:.3,pointBackgroundColor:'#1C2B3A',pointRadius:4},{label:'Target Trajectory',data:[264,282,325,319,317,350,279,222,165,108,50],borderColor:'#006A4D',backgroundColor:'rgba(0,106,77,.05)',borderWidth:2,borderDash:[5,4],fill:false,tension:.1,pointRadius:3,pointBackgroundColor:'#006A4D'},{label:'Goal (≤50)',data:[50,50,50,50,50,50,50,50,50,50,50],borderColor:'#DC2626',borderWidth:1.5,borderDash:[6,4],fill:false,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{family:'Arial',size:10},boxWidth:10}},tooltip:{mode:'index',intersect:false}},scales:{y:{beginAtZero:true,title:{display:true,text:'Tickets / Month',font:{size:10}},grid:{color:'#F0F0F0'},ticks:{font:{size:10}}},x:{grid:{color:'#F0F0F0'},ticks:{font:{size:10}}}}}});
+new Chart(ctx,{type:'line',data:{labels:["Aug '25","Sep '25","Oct '25","Nov '25","Dec '25","Jan '26","Feb '26","Mar '26","Apr '26","May '26","Jun '26"],datasets:[{label:'Actual Tickets/Month',data:[264,282,325,319,317,350,279,237,178,null,null],borderColor:'#1C2B3A',backgroundColor:'rgba(28,43,58,.06)',borderWidth:2,fill:true,tension:.3,pointBackgroundColor:'#1C2B3A',pointRadius:4},{label:'Target Trajectory',data:[297,272,248,223,198,173,149,124,99,74,50],borderColor:'#006A4D',backgroundColor:'rgba(0,106,77,.05)',borderWidth:2,borderDash:[5,4],fill:false,tension:.1,pointRadius:3,pointBackgroundColor:'#006A4D'},{label:'Goal (≤50)',data:[50,50,50,50,50,50,50,50,50,50,50],borderColor:'#DC2626',borderWidth:1.5,borderDash:[6,4],fill:false,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{family:'Arial',size:10},boxWidth:10}},tooltip:{mode:'index',intersect:false}},scales:{y:{beginAtZero:true,title:{display:true,text:'Tickets / Month',font:{size:10}},grid:{color:'#F0F0F0'},ticks:{font:{size:10}}},x:{grid:{color:'#F0F0F0'},ticks:{font:{size:10}}}}}});
 
 const ctx4=document.getElementById('ticketBreakdownChart').getContext('2d');
-new Chart(ctx4,{type:'bar',data:{labels:["Aug '25","Sep '25","Oct '25","Nov '25","Dec '25","Jan '26","Feb '26","Mar '26","Apr '26","May '26","Jun '26"],datasets:[{label:'Noise / Non-Actionable',type:'bar',data:[160,156,207,181,190,219,141,153,101,75,null],backgroundColor:'rgba(217,119,6,0.75)',borderColor:'#D97706',borderWidth:1,stack:'tickets',order:2},{label:'Repeat Failures',type:'bar',data:[65,52,37,36,41,47,32,39,54,50,null],backgroundColor:'rgba(220,38,38,0.75)',borderColor:'#DC2626',borderWidth:1,stack:'tickets',order:2},{label:'True Client-Impacting',type:'bar',data:[39,74,81,102,86,84,106,45,23,23,null],backgroundColor:'rgba(28,43,58,0.80)',borderColor:'#1C2B3A',borderWidth:1,stack:'tickets',order:2},{label:'Target Trajectory',type:'line',data:[264,282,325,319,317,350,279,222,165,108,50],borderColor:'#006A4D',backgroundColor:'rgba(0,106,77,.08)',borderWidth:2,borderDash:[5,4],fill:false,tension:.2,pointRadius:3,pointBackgroundColor:'#006A4D',stack:undefined,order:1},{label:'Goal (≤50)',type:'line',data:[50,50,50,50,50,50,50,50,50,50,50],borderColor:'#DC2626',borderWidth:1.5,borderDash:[6,4],fill:false,pointRadius:0,stack:undefined,order:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{footer:items=>{const total=items.filter(i=>i.dataset.type==='bar').reduce((s,i)=>s+(i.raw||0),0);return total>0?'Total: '+total:'';}}}},scales:{x:{stacked:true,grid:{color:'#F0F0F0'},ticks:{font:{size:10}}},y:{stacked:true,beginAtZero:true,title:{display:true,text:'Parent Tickets',font:{size:10}},grid:{color:'#F0F0F0'},ticks:{font:{size:10}}}}},plugins:[{id:'noiseDropAnnotation',afterDraw(chart){const c=chart.ctx,xs=chart.scales.x,ys=chart.scales.y;const xM=xs.getPixelForValue(8),xA=xs.getPixelForValue(9);const yM=ys.getPixelForValue(101),yA=ys.getPixelForValue(75);const yBracket=Math.min(yM,yA)-22;c.save();c.strokeStyle='#B45309';c.fillStyle='#B45309';c.lineWidth=1.5;c.setLineDash([4,3]);c.beginPath();c.moveTo(xM,yM-3);c.lineTo(xM,yBracket);c.lineTo(xA,yBracket);c.lineTo(xA,yA-3);c.stroke();c.setLineDash([]);c.beginPath();c.moveTo(xA,yA-3);c.lineTo(xA-4,yA-11);c.lineTo(xA+4,yA-11);c.closePath();c.fill();const xMid=(xM+xA)/2;const pill={w:82,h:30,r:5};const px=xMid-pill.w/2,py=yBracket-pill.h-4;c.fillStyle='rgba(254,243,199,0.95)';c.strokeStyle='#B45309';c.lineWidth=1;c.beginPath();c.roundRect(px,py,pill.w,pill.h,pill.r);c.fill();c.stroke();c.fillStyle='#92400E';c.font='bold 11px Arial';c.textAlign='center';c.fillText('↓ 26% noise',xMid,py+12);c.font='10px Arial';c.fillStyle='#B45309';c.fillText('101 → 75 tickets',xMid,py+24);c.restore();}}]});
+new Chart(ctx4,{type:'bar',data:{labels:["Aug '25","Sep '25","Oct '25","Nov '25","Dec '25","Jan '26","Feb '26","Mar '26","Apr '26","May '26","Jun '26"],datasets:[{label:'Noise / Non-Actionable',type:'bar',data:[160,156,207,181,190,219,141,153,101,null,null],backgroundColor:'rgba(217,119,6,0.75)',borderColor:'#D97706',borderWidth:1,stack:'tickets',order:2},{label:'Repeat Failures',type:'bar',data:[65,52,37,36,41,47,32,39,54,null,null],backgroundColor:'rgba(220,38,38,0.75)',borderColor:'#DC2626',borderWidth:1,stack:'tickets',order:2},{label:'True Client-Impacting',type:'bar',data:[39,74,81,102,86,84,106,45,23,null,null],backgroundColor:'rgba(28,43,58,0.80)',borderColor:'#1C2B3A',borderWidth:1,stack:'tickets',order:2},{label:'Target Trajectory',type:'line',data:[297,272,248,223,198,173,149,124,99,74,50],borderColor:'#006A4D',backgroundColor:'rgba(0,106,77,.08)',borderWidth:2,borderDash:[5,4],fill:false,tension:.2,pointRadius:3,pointBackgroundColor:'#006A4D',stack:undefined,order:1},{label:'Goal (≤50)',type:'line',data:[50,50,50,50,50,50,50,50,50,50,50],borderColor:'#DC2626',borderWidth:1.5,borderDash:[6,4],fill:false,pointRadius:0,stack:undefined,order:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{footer:items=>{const total=items.filter(i=>i.dataset.type==='bar').reduce((s,i)=>s+(i.raw||0),0);return total>0?'Total: '+total:'';}}}},scales:{x:{stacked:true,grid:{color:'#F0F0F0'},ticks:{font:{size:10}}},y:{stacked:true,beginAtZero:true,title:{display:true,text:'Parent Tickets',font:{size:10}},grid:{color:'#F0F0F0'},ticks:{font:{size:10}}}}},plugins:[{id:'noiseDropAnnotation',afterDraw(chart){const c=chart.ctx,xs=chart.scales.x,ys=chart.scales.y;const xM=xs.getPixelForValue(7),xA=xs.getPixelForValue(8);const yM=ys.getPixelForValue(153),yA=ys.getPixelForValue(101);const yBracket=Math.min(yM,yA)-22;c.save();c.strokeStyle='#B45309';c.fillStyle='#B45309';c.lineWidth=1.5;c.setLineDash([4,3]);c.beginPath();c.moveTo(xM,yM-3);c.lineTo(xM,yBracket);c.lineTo(xA,yBracket);c.lineTo(xA,yA-3);c.stroke();c.setLineDash([]);c.beginPath();c.moveTo(xA,yA-3);c.lineTo(xA-4,yA-11);c.lineTo(xA+4,yA-11);c.closePath();c.fill();const xMid=(xM+xA)/2;const pill={w:82,h:30,r:5};const px=xMid-pill.w/2,py=yBracket-pill.h-4;c.fillStyle='rgba(254,243,199,0.95)';c.strokeStyle='#B45309';c.lineWidth=1;c.beginPath();c.roundRect(px,py,pill.w,pill.h,pill.r);c.fill();c.stroke();c.fillStyle='#92400E';c.font='bold 11px Arial';c.textAlign='center';c.fillText('↓ 34% noise',xMid,py+12);c.font='10px Arial';c.fillStyle='#B45309';c.fillText('153 → 101 tickets',xMid,py+24);c.restore();}}]});
 
 function showTab(tab,btn){
   document.querySelectorAll('.tab-panel').forEach(p=>{p.classList.remove('active','visible');});
@@ -1920,13 +914,12 @@ function buildRisks(){
   const wsCol={'Program':'#334155','M&A':'#1D4ED8','Story/QA':'#059669','OpModel':'#B45309','Recurring':'#B91C1C','Tableau':'#6D28D9'};
   const wsLbl={'Program':'Program','M&A':'Monitoring & Alerting','Story/QA':'Story / QA','OpModel':'Operating Model','Recurring':'Recurring Issues','Tableau':'Tableau Perf.'};
   const staticRisks=[
-    {cat:'External Dependency',title:'JIRA BASS-16457 — Schema Mismatch',due:'Jun 20',desc:'Escalated May 8 with formal SLA. Column constraint violations responsible for ~23 repeat tickets/month. Fix requires Olympic team action; tracking continues in Phase 3 review.',owner:'Dev Team Lead',impact:'High',likelihood:'Medium',mitigation:'SLA escalation active. Escalate to leadership if unresolved at Phase 3 checkpoint Jun 22.',color:'#D97706'},
-    {cat:'External Dependency',title:'JIRA BASS-16564 — Tririga API',due:'Jun 20',desc:'Escalated May 8 with formal SLA. Persistent API/data issue driving ~20 repeat tickets/month. No resolution date from assigned team. Interim suppression active where confirmed non-client-impacting.',owner:'Dev Team Lead',impact:'High',likelihood:'Medium',mitigation:'Track weekly. Suppress alert path if confirmed non-client-impacting while fix is in flight.',color:'#D97706'},
-    {cat:'Operating Model',title:'116 Tickets Past 1.5x SLA — Aging Backlog',due:'Jul 13',desc:'Root-cause analysis (Jun 2026) found 116 tickets currently past 1.5x the category median SLA. Outlier tickets (45–98 days) show near-zero logged effort — they sit unresolved waiting on clients or source systems, not team capacity. Escalation path milestone due Jul 13.',owner:'Chris Jack',impact:'High',likelihood:'High',mitigation:'Implement aging thresholds per category by Jul 13. Auto-escalate stalled tickets to named owner + manager. Track "days since last update" to surface silent tickets. Weekly aging review cadence.',color:'#D97706'},
-    {cat:'External Dependency',title:'Source System Response Gaps — Maximo, IFM, Archibus, Vantage, Corrigo',due:'Aug 10',desc:'Data Quality/Refresh is the worst category vs. benchmark (~3.9x overhead). The 45–98 day tail tickets stall waiting on source systems or clients — no named contacts, no response SLAs, no visibility into blockers. Mitigation due Aug 10.',owner:'Chris Jack',impact:'High',likelihood:'Medium',mitigation:'Name owners/contacts for each source system with explicit response expectations by Aug 10. Track "blocked-by" in tickets so external waits are visible and actively chased.',color:'#B45309'},
-    {cat:'Adoption',title:'QA Enforcement Compliance',due:'Jun 30',desc:'Story rewrite at 81.3% (352/424) and QA subtasks at 100% (433/433). Kanban board approved — change management plan in progress. Risk of compliance drift once formal program attention shifts.',owner:'Megan Lane',impact:'Low',likelihood:'Low',mitigation:'Finalize Kanban scoring rubric with Gagan. Weekly QA compliance tracking via Gagan report from Phase 3 onward.',color:'#2563EB'},
-    {cat:'Data Risk',title:'SLA Date Coverage — Only 41% of Tickets Usable',due:'Jul 27',desc:'Only 41% of tickets have both Actual Start and Resolved dates populated, making SLA measurement unreliable across the remaining 59%. Without date fields enforced, the SLA dashboard cannot detect breaches in time to act.',owner:'Chris Jack',impact:'Medium',likelihood:'High',mitigation:'Mandate Actual Start + Resolved date fields on all new tickets as part of the Jul 27 SLA dashboard milestone. Backfill audit for open tickets.',color:'#7C3AED'},
-    {cat:'Resource',title:'Key Person Concentration',due:'Ongoing',desc:'John Hernandez remains primary owner on 3 of 5 workstreams (Monitoring, Tableau, Program). No change to risk posture in Phase 3.',owner:'Program',impact:'High',likelihood:'Low',mitigation:'Workstream runbooks documented. Named backup owners to be confirmed at Phase 3 close (Jul 13).',color:'#DC2626'},
+    {cat:'External Dependency',title:'JIRA BASS-16457 — Schema Mismatch',due:'May 25',desc:'Escalated May 8 with formal SLA. Column constraint violations responsible for ~23 repeat tickets/month. Fix requires Olympic team action; SLA response now tracked in Phase 2 review.',owner:'Dev Team Lead',impact:'High',likelihood:'Medium',mitigation:'SLA escalation active — response expected by May 18. If unresolved, escalate to leadership at Phase 2 checkpoint.',color:'#D97706'},
+    {cat:'External Dependency',title:'JIRA BASS-16564 — Tririga API',due:'May 25',desc:'Escalated May 8 with formal SLA. Persistent API/data issue driving ~20 repeat tickets/month. No resolution date from assigned team. Interim suppression evaluated if non-client-impacting.',owner:'Dev Team Lead',impact:'High',likelihood:'Medium',mitigation:'SLA escalation active — track weekly. Suppress alert path if confirmed non-client-impacting while fix is in flight.',color:'#D97706'},
+    {cat:'Adoption',title:'QA Enforcement Compliance',due:'Resolved',desc:'Largely resolved as of June 16. Story rewrites at 99.8% (422/423) and QA Test Case Creation & Execution subtasks at 100% (437/437). 38 JIRA story templates live. Remaining risk is sustaining QA discipline as work moves to Kanban.',owner:'Megan Lane',impact:'Low',likelihood:'Low',mitigation:'Carry QA gates into the Kanban workflow. Gagan\'s reporting tool/scoring rubric will surface non-compliance once live.',color:'#059669'},
+    {cat:'Dependency',title:'Kanban Migration & Scoring Rubric',due:'Jul 2026',desc:'Story/QA redesign content is essentially complete; the open item is the Change Management Plan to migrate BASS from sprint to Kanban and finalizing the scoring rubric for Gagan\'s reporting tool. Per Gagan, implementation takes <1 week once the Kanban migration is done and the finalized rubric is submitted.',owner:'Megan Lane',impact:'Medium',likelihood:'Low',mitigation:'Finalize and submit scoring rubric; sequence Kanban migration via the Change Management Plan, then trigger Gagan\'s ~1-week implementation.',color:'#7C3AED'},
+    {cat:'Data Risk',title:'April Noise Drop — Validate Before Declaring Win',due:'May 31',desc:'April showed a dramatic 34% drop in noise tickets (153→101). This may reflect the alert suppression work taking effect or a seasonal anomaly. Premature celebration before May data confirms the trend would set false expectations with leadership.',owner:'John Hernandez',impact:'Medium',likelihood:'Medium',mitigation:'Hold executive communication on noise reduction until May actuals are in. Compare April and May side-by-side before Phase 2 readout.',color:'#059669'},
+    {cat:'Resource',title:'Key Person Concentration',due:'Ongoing',desc:'John Hernandez remains primary owner on 3 of 5 workstreams (Monitoring, Tableau, Program). No change to risk posture in Phase 2.',owner:'Program',impact:'High',likelihood:'Low',mitigation:'Workstream runbook documentation targeted for Phase 2 close. Identify named backup owners by May 25.',color:'#DC2626'},
   ];
   const iC={Critical:'#FEE2E2',High:'#FEF3C7',Medium:'#EDE9FE',Low:'#D1FAE5'};
   const iT={Critical:'#991B1B',High:'#92400E',Medium:'#5B21B6',Low:'#065F46'};
